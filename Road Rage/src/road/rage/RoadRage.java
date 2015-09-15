@@ -8,6 +8,7 @@ package road.rage;
 /**
  *
  * @author Richard
+ * @author George
  */
 public class RoadRage {
 
