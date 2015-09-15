@@ -9,7 +9,8 @@ package road.rage;
  *
  * @author Richard
  * @author George
- */
+ * @author Kenneth
+ */        
 public class RoadRage {
 
     /**
