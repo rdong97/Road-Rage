@@ -18,7 +18,7 @@ public class RoadRage {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GameRunner newGame = new GameRunner();
     }
     
 }
