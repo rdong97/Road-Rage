@@ -13,24 +13,53 @@ import java.awt.event.MouseListener;
  * @author Richard
  */
 public class Gunner implements MouseListener{
-    private int weaponType, ammo, maxAmmo;
-    
+    private int gunX, gunY, weaponType, ammo, maxAmmo;
+    private boolean gunFiring;
+    private int screenX, screenY, xCoordinate, yCoordinate;
     public Gunner()
     {
+        gunX = 200;
+        gunY = 70;
         weaponType = 1;
         ammo = 100;
         maxAmmo = 100;
+        gunFiring = false;
     }
-    public Gunner(int t, int a, int m)
+    public Gunner(int x, int y, int t, int a, int m)
     {
+        gunX = x;
+        gunY = y;
         weaponType = t;
         ammo = a;
         maxAmmo = m;
+        gunFiring = false;
     }
-
+    public void updateLocation(int x, int y)
+    {
+        gunX = x;
+        gunY = y;
+    }
+    
+    public void draw(Graphics window)
+    {
+        if(gunFiring)
+        {
+            //draw bullets being fired
+        }
+        
+        //enemy might explode if line passes over enemy location
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        screenX = e.getX();
+        screenY = e.getY();
+        xCoordinate = CoordinateConverter.screenToXCoordinate(screenX);
+        yCoordinate = CoordinateConverter.screenToYCoordinate(gunX, screenX);
+        gunFiring = true;
+        //point - slope form of line of bullets
+        
+        
     }
 
     @Override

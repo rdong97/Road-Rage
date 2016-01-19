@@ -13,7 +13,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Hunter extends Entity implements KeyListener{
+public class Hunter extends Vehicle implements KeyListener{
     
     private int health, maxHealth, xSpeed, ySpeed;
     private int vehicleType, weaponType, ammo, maxAmmo, score;
@@ -46,14 +46,8 @@ public class Hunter extends Entity implements KeyListener{
     }
     public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int wt, int a, int ma, int s)
     {
-        super(x,y,w,l);
-        
-        xSpeed = xs;
-        ySpeed = ys;
-        
-        health = h;//health
-        maxHealth = mh;
-        
+        super(x,y,w,l,xs,ys,h,mh);
+                
         vehicleType = t;//graphics
         weaponType = wt;
         
