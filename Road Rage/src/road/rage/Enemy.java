@@ -22,6 +22,13 @@ public class Enemy extends Vehicle{
         super(x,y,w,l,xs,ys,h,mh);
         enemyType = t;
     }
+    public int findXSpeed()//AI for calculating anticollision
+    {
+        //collision with debris
+        //collision with user
+        return 0;
+    }
+    
     @Override
     public void draw(Graphics window) {
         

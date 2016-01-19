@@ -8,7 +8,7 @@ package road.rage;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
+import javax.swing.Timer;
 
 /**
  *

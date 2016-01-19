@@ -38,7 +38,10 @@ public class GameRunner extends JPanel {
     private String playerName;
     private int score, ammo, maxAmmo, health, maxHealth;
     
-    
+    public GameRunner()
+    {
+        road = new Road();
+    }
     public void startLevel()
     {
         //new timer for refresh rate
