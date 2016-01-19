@@ -23,7 +23,7 @@ public class Hunter extends Vehicle implements KeyListener{
     {
         super();
         xCoordinate = 190;//positon
-        yCoordinate = 50;
+        yCoordinate = 540;//540 to 580, final
         
         xWidth = 20;//size
         yLength = 40;

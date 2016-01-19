@@ -30,9 +30,9 @@ public class CoordinateConverter {
     {
         return sX/xScale;
     }
-    public static int screenToYCoordinate(int cY, int sY)
+    public static int screenToYCoordinate(int sY)
     {
-        return sY/yScale+cY;
+        return sY/yScale+300;
     }
     
 }

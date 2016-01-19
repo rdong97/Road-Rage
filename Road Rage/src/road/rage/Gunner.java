@@ -5,8 +5,10 @@
  */
 package road.rage;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +17,10 @@ import java.awt.event.MouseListener;
 public class Gunner implements MouseListener{
     private int gunX, gunY, weaponType, ammo, maxAmmo;
     private boolean gunFiring;
-    private int screenX, screenY, xCoordinate, yCoordinate;
+    private int screenX, screenY, xTargetCoordinate, yTargetCoordinate;
+    private Point hitPoint;
+    private ArrayList<Enemy> enemyLocations;
+   
     public Gunner()
     {
         gunX = 200;
@@ -23,6 +28,8 @@ public class Gunner implements MouseListener{
         weaponType = 1;
         ammo = 100;
         maxAmmo = 100;
+        hitPoint = new Point(0,0);
+        enemyLocations = new ArrayList<Enemy>();
         gunFiring = false;
     }
     public Gunner(int x, int y, int t, int a, int m)
@@ -32,19 +39,25 @@ public class Gunner implements MouseListener{
         weaponType = t;
         ammo = a;
         maxAmmo = m;
+        hitPoint = new Point(0,0);
+        enemyLocations = new ArrayList<Enemy>();
         gunFiring = false;
     }
-    public void updateLocation(int x, int y)
+    public void updateLocations(ArrayList<Enemy>enemyLocs)
     {
-        gunX = x;
-        gunY = y;
+        enemyLocations = enemyLocs;
     }
-    
+    public void fireWeapon()
+    {
+        //check if the point falls insuide enemy hit box
+        ammo--;
+    }
     public void draw(Graphics window)
     {
         if(gunFiring)
         {
-            //draw bullets being fired
+            //draw bullet lights at gun location
+            //draw explosions of enemy being fired
         }
         
         //enemy might explode if line passes over enemy location
@@ -54,31 +67,31 @@ public class Gunner implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         screenX = e.getX();
         screenY = e.getY();
-        xCoordinate = CoordinateConverter.screenToXCoordinate(screenX);
-        yCoordinate = CoordinateConverter.screenToYCoordinate(gunX, screenX);
+        hitPoint.move(CoordinateConverter.screenToXCoordinate(screenX),CoordinateConverter.screenToYCoordinate(screenY));
         gunFiring = true;
-        //point - slope form of line of bullets
-        
-        
+        //fire
+        fireWeapon();
+        gunFiring = false;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        screenX = e.getX();
+        screenY = e.getY();
+        hitPoint.move(CoordinateConverter.screenToXCoordinate(screenX),CoordinateConverter.screenToYCoordinate(screenY));
+        gunFiring = true;
+        //fire
+        fireWeapon();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        gunFiring = false;
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void mouseExited(MouseEvent e) {}
 }
