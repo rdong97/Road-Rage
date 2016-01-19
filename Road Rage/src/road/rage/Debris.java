@@ -21,7 +21,7 @@ public class Debris extends Entity {
     }
     public Debris(int x, int y, int ft)
     {
-        super(x,y,300,200);
+        super(x,y,300,300);
         if(ft == 1)
         {
             xCollisionCoordinate = 0;
@@ -32,22 +32,22 @@ public class Debris extends Entity {
         else if(ft == 2)
         {
             xCollisionCoordinate = 0;
-            yCollisionCoordinate = y+120;
-            xDebrisWidth = 120;
+            yCollisionCoordinate = y+80;
+            xDebrisWidth = 100;
             yDebrisLength = 40;
         }
         else if(ft == 3)
         {
-            xCollisionCoordinate = 180;
-            yCollisionCoordinate = y+120;
-            xDebrisWidth = 120;
+            xCollisionCoordinate = 200;
+            yCollisionCoordinate = y+80;
+            xDebrisWidth = 100;
             yDebrisLength = 40;
         }
         else if(ft == 4)
         {
-            xCollisionCoordinate = 90;
-            yCollisionCoordinate = y+120;
-            xDebrisWidth = 120;
+            xCollisionCoordinate = 100;
+            yCollisionCoordinate = y+800;
+            xDebrisWidth = 100;
             yDebrisLength = 40;
         }
     }
@@ -99,7 +99,7 @@ public class Debris extends Entity {
     0 = debris
     | = nothing
     Each field is 300 wide (x)
-    and 200 long (y)
+    and 300 long (y)
     field coordinate refers to top left of screen
     debris coordinate refers to top left of hitbox
     */

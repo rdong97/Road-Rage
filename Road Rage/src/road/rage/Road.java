@@ -11,19 +11,8 @@ import java.awt.Graphics;
  *
  * @author Richard
  */
-public class Enemy extends Vehicle{
-
-    private int enemyType;
-    
-    public Enemy() {
-        super();
-    }
-    public Enemy(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t) {
-        super(x,y,w,l,xs,ys,h,mh);
-        enemyType = t;
-    }
-    @Override
+public class Road {
     public void draw(Graphics window) {
         
-    } 
+    }
 }

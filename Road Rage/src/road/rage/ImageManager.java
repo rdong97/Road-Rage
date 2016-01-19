@@ -9,6 +9,6 @@ package road.rage;
  *
  * @author Richard
  */
-public class Graphics {
+public class ImageManager {
     
 }

@@ -27,15 +27,19 @@ public abstract class Entity implements Location{
         yLength = l;
     }
     
+    @Override
     public int getXCoordinate() {
         return xCoordinate;
     }
+    @Override
     public int getYCoordinate() {
         return yCoordinate;
     }
+    @Override
     public int getXWidth() {
         return xWidth;
     }
+    @Override
     public int getYLength() {
         return yLength;
     }

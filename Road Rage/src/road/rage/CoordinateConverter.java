@@ -34,5 +34,12 @@ public class CoordinateConverter {
     {
         return sY/yScale+300;
     }
-    
+    public static int xToScreenCoordinate(int cX)
+    {
+        return cX*xScale;
+    }
+    public static int yToScreenCoordinate(int cY)
+    {
+        return (cY-300)*yScale;
+    }
 }
