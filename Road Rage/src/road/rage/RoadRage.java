@@ -18,7 +18,7 @@ public class RoadRage {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GameRunner newGame = new GameRunner();
+        MainMenu newMenu = new MainMenu();
     }
     
 }
