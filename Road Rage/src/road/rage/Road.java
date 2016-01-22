@@ -6,6 +6,7 @@
 package road.rage;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -31,16 +32,93 @@ public class Road {
         //new enemy from list, calculate from hunter location
     }
     public void removeDebris() {
-        //remove at bottom of screen
-        //spawn new debris once removed
+        Debris toRemove = null;
+        for(Debris d:debrisList) {
+            if(d.getXCoordinate()<=0) {
+                toRemove = d;
+            }
+        }
+        if(toRemove!=null)
+        {
+            debrisList.remove(toRemove);
+        }
+        spawnDebris();
     }
-    public void removeEnemy() {
-        //remove in checked collisions
+    public void removeEnemy(Enemy toMatch) {
+        Enemy toRemove = null;
+        for(Enemy e:enemyList) {
+            if(e.equals(toMatch)) {
+                toRemove = e;
+            }
+        }
+        if(toRemove!=null)
+        {
+            enemyList.remove(toRemove);
+        }
     }
     
     public void checkCollisions() {
-        //check enemy next locations, remove if hit
-        //check hunter collisions, damage
+        //establish points for Hunter hitbox
+        ArrayList<Point>hunterDamagePoints = new ArrayList<Point>();
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()+hunter.getYLength()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth()/2, hunter.getYCoordinate()));
+        /*
+        Hunter Damage Point Locations (denoted by '*')
+        
+        *--*--*
+        |     |
+        |     |
+        |     |
+        |     |
+        *-----*
+        
+        */
+        //check collision with debris
+        for(Debris d:debrisList){
+            if(d.isDebris()) {
+                for(Point p:hunterDamagePoints) {
+                    if(p.getX()>d.getXCollisionCoordinate()&&p.getX()<d.getXCollisionCoordinate()+d.getXDebrisWidth()) {
+                        if(p.getY()>d.getYCollisionCoordinate()&&p.getY()<d.getYCollisionCoordinate()+d.getYDebrisLength()) {
+                            hunter.setHealth(hunter.getHealth()-5);
+                        }                
+                    }
+                }  
+            }
+            
+        }
+        
+        //Due to staggered enemy locations, only a max of 2 enemies can be hit at the same time
+        Enemy toRemove1 = null;
+        Enemy toRemove2 = null;
+        for(Enemy e:enemyList) {
+            for(Point p:hunterDamagePoints) {
+                if(p.getX()>e.getXCoordinate()&&p.getX()<e.getXCoordinate()+e.getXWidth()) {
+                    if(p.getY()>e.getYCoordinate()&&p.getY()<e.getYCoordinate()+e.getYLength()) {
+                        hunter.setHealth(hunter.getHealth()-5);
+                        if(toRemove1 == null) {
+                            toRemove1 = e;
+                        }
+                        else {
+                            toRemove2 = e; //both enemies need to be removed, two slots
+                        }   
+                    }                
+                }
+            }
+        }
+        
+        //Due to pathing AI, enemies cannot hit debris and will steer away
+        //Due to staggered spawning, enemies cannot collide with each other
+        if(toRemove1!=null)
+        {
+            removeEnemy(toRemove1);
+        }
+        if(toRemove2!=null)
+        {
+            removeEnemy(toRemove2);
+        }
     }
     public void updateEntityLocations() {
         hunter.findNextLocation();
