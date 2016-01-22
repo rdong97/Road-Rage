@@ -75,6 +75,8 @@ public class Road {
         |     |
         *-----*
         
+        note the extra damage caused by a head on collision
+        
         */
         //check collision with debris
         for(Debris d:debrisList){
