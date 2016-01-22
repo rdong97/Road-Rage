@@ -10,14 +10,18 @@ package road.rage;
  * @author Richard
  */
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.Timer;
 
 public class Hunter extends Vehicle implements KeyListener{
     
     private int health, maxHealth, xSpeed, ySpeed;
     private int vehicleType, ammo, maxAmmo, score;
     private boolean[] keysPressed;
+    private Timer timer;
     private Gunner gunner;
     
     public Hunter()
@@ -86,13 +90,6 @@ public class Hunter extends Vehicle implements KeyListener{
     public int getScore() {
         return score;
     }
-    
-    public void setXSpeed(int x) {
-        xSpeed = x;
-    }
-    public void setYSpeed(int y) {
-        ySpeed = y;
-    }
     public void setHealth(int h) {
         health = h;
     }
@@ -111,7 +108,20 @@ public class Hunter extends Vehicle implements KeyListener{
     public void setScore(int s) {
         score = s;
     }
-
+    public void startHealthIncrementalTimer() {     
+        int delay = 100;
+        ActionListener task = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+               health++;
+               if(health>maxHealth) {
+                   health = maxHealth;
+               }
+            }
+        };
+        timer =new Timer(delay, task);
+        timer.start();
+    }
     public void findXSpeed() {
         if(keysPressed[0]||keysPressed[2]) {
             if(getXCoordinate()>=10) {
