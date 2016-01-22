@@ -66,12 +66,6 @@ public class Hunter extends Vehicle implements KeyListener{
         gunner = new Gunner(a,ma);
     }
 
-    public int getXSpeed() {
-        return xSpeed;
-    }
-    public int getYSpeed() {
-        return ySpeed;
-    }
     public int getHealth() {
         return health;
     }
@@ -167,16 +161,16 @@ public class Hunter extends Vehicle implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_A) {
-           keysPressed[0] = true;
+           keysPressed[0] = false;
         }
         if(e.getKeyCode() == KeyEvent.VK_D) {
-           keysPressed[1] = true;
+           keysPressed[1] = false;
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-           keysPressed[2] = true;
+           keysPressed[2] = false;
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-           keysPressed[3] = true;
+           keysPressed[3] = false;
         }
     }
 }

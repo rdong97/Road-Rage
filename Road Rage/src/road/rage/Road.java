@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class Road {
     
-    private Hunter hunter;
-    private ArrayList<Debris>debrisList;
-    private ArrayList<Enemy>enemyList;
+    private final Hunter hunter;
+    private final ArrayList<Debris>debrisList;
+    private final ArrayList<Enemy>enemyList;
     
     public Road() {
         hunter = new Hunter();  
@@ -26,11 +26,21 @@ public class Road {
         enemyList = new ArrayList<Enemy>();
     }
     public void spawnDebris() {
-        //add random debris when one falls below 0-line
+        int randomType = (int)(Math.random()*4+1);
+        debrisList.add(new Debris(0,0,0,0,randomType));
     }
     public void spawnEnemy() {
         //new enemy from list, calculate from hunter location
     }
+    public boolean hasGameEnded() {
+        for(Enemy e:enemyList) {
+            if(e.getYCoordinate()<300-e.getYLength()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void removeDebris() {
         Debris toRemove = null;
         for(Debris d:debrisList) {

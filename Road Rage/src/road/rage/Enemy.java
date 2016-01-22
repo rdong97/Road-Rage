@@ -33,29 +33,34 @@ public class Enemy extends Vehicle{
     {
         debrisList = list;
         Debris closest = list.get(0);
+        for(Debris d:debrisList) {
+            if(d.getYCoordinate()>closest.getYCoordinate()) {
+                closest = d;
+            }
+        }
         if(!closest.isDebris()) {
             return 0;
         }
-        else if(closest.getXCollisionCoordinate()==0) {//left debris field
+        else if(closest.getDebrisType()==2) {//left debris field
             Point trackPoint = new Point(200,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
             double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
             double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int xSpeed =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return xSpeed;
+            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
+            return speedNeeded;
         }
-        else if(closest.getXCollisionCoordinate()==200) {//right debris field
+        else if(closest.getDebrisType()==3) {//right debris field
             Point trackPoint = new Point(100,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
             double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
             double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int xSpeed =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return xSpeed;
+            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
+            return speedNeeded;
         }
-        else if(closest.getXCollisionCoordinate()==100) {//middle debris field
+        else if(closest.getDebrisType()==4) {//middle debris field
             Point trackPoint = new Point(20,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
             double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
             double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int xSpeed =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return xSpeed;
+            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
+            return speedNeeded;
         }
         else {
             return 0;

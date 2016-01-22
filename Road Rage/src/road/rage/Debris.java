@@ -58,7 +58,7 @@ public class Debris extends Entity {
     }
     public int getYCollisionCoordinate()
     {
-        return xCollisionCoordinate;
+        return yCollisionCoordinate;
     }
     public int getXDebrisWidth()
     {
@@ -71,6 +71,9 @@ public class Debris extends Entity {
     public boolean isDebris()
     {
         return isDebris;
+    }
+    public int getDebrisType() {
+        return fieldType;
     }
     @Override
     public void draw(Graphics window) {
