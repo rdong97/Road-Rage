@@ -16,7 +16,8 @@ import java.awt.event.KeyListener;
 public class Hunter extends Vehicle implements KeyListener{
     
     private int health, maxHealth, xSpeed, ySpeed;
-    private int vehicleType, weaponType, ammo, maxAmmo, score;
+    private int vehicleType, ammo, maxAmmo, score;
+    private boolean[] keysPressed;
     private Gunner gunner;
     
     public Hunter()
@@ -35,28 +36,30 @@ public class Hunter extends Vehicle implements KeyListener{
         maxHealth = 100;
         
         vehicleType = 1;//graphics
-        weaponType = 1;
         
         ammo = 100;//weaponry
         maxAmmo = 100; 
         
         score = 0;
         
+        keysPressed = new boolean[4]; //A, D, left, right
+        
         gunner = new Gunner();
     }
-    public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int wt, int a, int ma, int s)
+    public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int a, int ma, int s)
     {
         super(x,y,w,l,xs,ys,h,mh);
                 
         vehicleType = t;//graphics
-        weaponType = wt;
         
         ammo = a;//weaponry
         maxAmmo = ma; 
         
         score = s;
         
-        gunner = new Gunner();
+        keysPressed = new boolean[4]; //A, D, left, right
+        
+        gunner = new Gunner(a,ma);
     }
 
     public int getXSpeed() {
@@ -73,9 +76,6 @@ public class Hunter extends Vehicle implements KeyListener{
     }
     public int getVehicleType() {
         return vehicleType;
-    }
-    public int getWeaponType() {
-        return weaponType;
     }
     public int getAmmo() {
         return ammo;
@@ -102,9 +102,6 @@ public class Hunter extends Vehicle implements KeyListener{
     public void setVehicleType(int t) {
         vehicleType = t;
     }
-    public void setWeaponType(int t) {
-        weaponType = t;
-    }
     public void setAmmo(int a) {
         ammo = a;
     }
@@ -116,8 +113,27 @@ public class Hunter extends Vehicle implements KeyListener{
     }
 
     @Override
+    public void findNextLocation() {
+      
+        if(keysPressed[0]||keysPressed[2]) {
+            if(getXCoordinate()>=10) {
+                setXSpeed(-10);
+                setXCoordinate(getXCoordinate()+getXSpeed());                
+            }
+        }
+        if(keysPressed[1]||keysPressed[3]) {
+            if(getXCoordinate()<=290) {
+                setXSpeed(10);
+                setXCoordinate(getXCoordinate()+getXSpeed());                
+            }
+        }
+    }
+    @Override
     public void draw(Graphics window) {
-        
+        int imageNum = 0;//will change based on skin
+        int screenX = CoordinateConverter.xToScreenCoordinate(xCoordinate);
+        int screenY = CoordinateConverter.yToScreenCoordinate(yCoordinate);
+        window.drawImage(ImageManager.getImage(imageNum),screenX, screenY, null);
     }
 
     @Override
@@ -125,11 +141,34 @@ public class Hunter extends Vehicle implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+       
+        if(e.getKeyCode() == KeyEvent.VK_A) {
+           keysPressed[0] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_D) {
+           keysPressed[1] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+           keysPressed[2] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+           keysPressed[3] = true;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(e.getKeyCode() == KeyEvent.VK_A) {
+           keysPressed[0] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_D) {
+           keysPressed[1] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+           keysPressed[2] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+           keysPressed[3] = true;
+        }
     }
 }

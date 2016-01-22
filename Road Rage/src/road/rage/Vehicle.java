@@ -31,7 +31,7 @@ public abstract class Vehicle extends Entity{
         maxHealth = mh;
         
     }
+    public abstract void findNextLocation();
     @Override
-    public abstract void draw(Graphics window);
-    
+    public abstract void draw(Graphics window); 
 }

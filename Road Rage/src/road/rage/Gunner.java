@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Richard
  */
 public class Gunner implements MouseListener{
-    private int gunX, gunY, weaponType, ammo, maxAmmo;
+    private int ammo, maxAmmo;
     private boolean gunFiring;
     private int screenX, screenY, xTargetCoordinate, yTargetCoordinate;
     private Point hitPoint;
@@ -24,20 +24,14 @@ public class Gunner implements MouseListener{
    
     public Gunner()
     {
-        gunX = 200;
-        gunY = 70;
-        weaponType = 1;
         ammo = 100;
         maxAmmo = 100;
         hitPoint = new Point(0,0);
         enemyLocations = new ArrayList<Enemy>();
         gunFiring = false;
     }
-    public Gunner(int x, int y, int t, int a, int m)
+    public Gunner(int a, int m)
     {
-        gunX = x;
-        gunY = y;
-        weaponType = t;
         ammo = a;
         maxAmmo = m;
         hitPoint = new Point(0,0);

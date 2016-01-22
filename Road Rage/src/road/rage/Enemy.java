@@ -33,4 +33,9 @@ public class Enemy extends Vehicle{
     public void draw(Graphics window) {
         
     } 
+
+    @Override
+    public void findNextLocation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
