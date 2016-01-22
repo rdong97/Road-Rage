@@ -48,7 +48,7 @@ public class Hunter extends Vehicle implements KeyListener{
     }
     public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int a, int ma, int s)
     {
-        super(x,y,w,l,xs,ys,h,mh);
+        super(x,y,xs,ys,w,l,h,mh);
                 
         vehicleType = t;//graphics
         
@@ -112,9 +112,7 @@ public class Hunter extends Vehicle implements KeyListener{
         score = s;
     }
 
-    @Override
-    public void findNextLocation() {
-      
+    public void findXSpeed() {
         if(keysPressed[0]||keysPressed[2]) {
             if(getXCoordinate()>=10) {
                 setXSpeed(-10);

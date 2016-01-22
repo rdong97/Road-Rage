@@ -43,5 +43,6 @@ public interface Location
      * @author Richard Dong
      */
     public void draw(Graphics window);
+    public void findNextLocation();
 }
 

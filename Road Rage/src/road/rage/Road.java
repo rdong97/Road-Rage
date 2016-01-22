@@ -21,16 +21,18 @@ public class Road {
     public Road() {
         hunter = new Hunter();  
         debrisList = new ArrayList<Debris>();
+        //add starting default debris
         enemyList = new ArrayList<Enemy>();
     }
     public void spawnDebris() {
-        
+        //add random debris when one falls below 0-line
     }
     public void spawnEnemy() {
-        //new enemy from list
+        //new enemy from list, calculate from hunter location
     }
     public void removeDebris() {
         //remove at bottom of screen
+        //spawn new debris once removed
     }
     public void removeEnemy() {
         //remove in checked collisions
@@ -45,6 +47,9 @@ public class Road {
         for(Enemy e:enemyList) {
             e.findXSpeed(debrisList);
             e.findNextLocation();
+        }
+        for(Debris d:debrisList) {
+            d.findNextLocation();
         }
     }
     

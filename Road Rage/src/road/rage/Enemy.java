@@ -68,11 +68,5 @@ public class Enemy extends Vehicle{
         int screenX = CoordinateConverter.xToScreenCoordinate(xCoordinate);
         int screenY = CoordinateConverter.yToScreenCoordinate(yCoordinate);
         window.drawImage(ImageManager.getImage(imageNum),screenX, screenY, null);
-    } 
-
-    @Override
-    public void findNextLocation() {
-        setXCoordinate(getXCoordinate()+getXSpeed());
-        setYCoordinate(getYCoordinate()+getYSpeed());
     }
 }

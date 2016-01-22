@@ -13,37 +13,22 @@ import java.awt.Graphics;
  */
 public abstract class Vehicle extends Entity{
 
-    private int xSpeed, ySpeed, health, maxHealth;
+    private int health, maxHealth;
     public Vehicle() {
         super();
-        xSpeed = 0;
-        ySpeed = 0;
         health = 0;
         maxHealth = 0;        
     }
-    public Vehicle(int x, int y, int w, int l, int xs, int ys, int h, int mh) {
+    public Vehicle(int x, int y, int xs, int ys, int w, int l, int h, int mh) {
     
-        super(x,y,w,l);
-        xSpeed = xs;
-        ySpeed = ys;
+        super(x,y,xs,ys,w,l);
         
         health = h;//health
         maxHealth = mh;
         
     }
-    public int getXSpeed() {
-        return xSpeed;
-    }
-    public int getYSpeed() {
-        return ySpeed;
-    }
-    public void setXSpeed(int x) {
-        xSpeed = x;
-    }
-    public void setYSpeed(int y) {
-        ySpeed = y;
-    }
-    public abstract void findNextLocation();
+    
+    
     @Override
     public abstract void draw(Graphics window); 
 }

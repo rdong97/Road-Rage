@@ -12,17 +12,21 @@ package road.rage;
 import java.awt.Graphics;
 
 public abstract class Entity implements Location{
-    public int xCoordinate, yCoordinate, xWidth, yLength;
+    public int xCoordinate, yCoordinate, xWidth, yLength,xSpeed, ySpeed;
     
     public Entity() {
         xCoordinate = 0;
         yCoordinate = 0;
+        xSpeed = 0;
+        ySpeed = 0;
         xWidth = 0;
         yLength = 0;
     }
-    public Entity(int x, int y, int w, int l) {
+    public Entity(int x, int y, int xs, int ys, int w, int l) {
         xCoordinate = x;
         yCoordinate = y;
+        xSpeed = xs;
+        ySpeed = ys;
         xWidth = w;
         yLength = l;
     }
@@ -49,5 +53,22 @@ public abstract class Entity implements Location{
     public void setYCoordinate(int y) {
         yCoordinate = y;
     }
+    public int getXSpeed() {
+        return xSpeed;
+    }
+    public int getYSpeed() {
+        return ySpeed;
+    }
+    public void setXSpeed(int x) {
+        xSpeed = x;
+    }
+    public void setYSpeed(int y) {
+        ySpeed = y;
+    }
+    public void findNextLocation(){
+        setXCoordinate(getXCoordinate()+getXSpeed());
+        setYCoordinate(getYCoordinate()+getYSpeed());
+    }
+    @Override
     public abstract void draw(Graphics window);
 }

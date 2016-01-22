@@ -16,9 +16,9 @@ public class Debris extends Entity {
     private int fieldType,xCollisionCoordinate,yCollisionCoordinate,xDebrisWidth,yDebrisLength;
     private boolean isDebris;
     
-    public Debris(int x, int y, int ft)
+    public Debris(int x, int y, int xs, int ys, int ft)
     {
-        super(x,y,300,300);
+        super(x,y,xs,ys,300,300);
         if(ft == 1)
         {
             xCollisionCoordinate = 0;
@@ -108,4 +108,5 @@ public class Debris extends Entity {
     field coordinate refers to top left of screen
     debris coordinate refers to top left of hitbox
     */
+
 }
