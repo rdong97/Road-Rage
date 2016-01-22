@@ -41,7 +41,11 @@ public class Road {
         //check hunter collisions, damage
     }
     public void updateEntityLocations() {
-        //utilize enemy AI
+        hunter.findNextLocation();
+        for(Enemy e:enemyList) {
+            e.findXSpeed(debrisList);
+            e.findNextLocation();
+        }
     }
     
     public void draw(Graphics window) {

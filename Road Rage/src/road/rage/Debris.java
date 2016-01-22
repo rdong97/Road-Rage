@@ -14,11 +14,8 @@ import java.awt.Graphics;
 public class Debris extends Entity {
 
     private int fieldType,xCollisionCoordinate,yCollisionCoordinate,xDebrisWidth,yDebrisLength;
+    private boolean isDebris;
     
-    public Debris()
-    {
-        super();
-    }
     public Debris(int x, int y, int ft)
     {
         super(x,y,300,300);
@@ -28,6 +25,7 @@ public class Debris extends Entity {
             yCollisionCoordinate = 0;
             xDebrisWidth = 0;
             yDebrisLength = 0;
+            isDebris = false;
         }
         else if(ft == 2)
         {
@@ -35,6 +33,7 @@ public class Debris extends Entity {
             yCollisionCoordinate = y+80;
             xDebrisWidth = 100;
             yDebrisLength = 40;
+            isDebris = true;
         }
         else if(ft == 3)
         {
@@ -42,6 +41,7 @@ public class Debris extends Entity {
             yCollisionCoordinate = y+80;
             xDebrisWidth = 100;
             yDebrisLength = 40;
+            isDebris = true;
         }
         else if(ft == 4)
         {
@@ -49,6 +49,7 @@ public class Debris extends Entity {
             yCollisionCoordinate = y+800;
             xDebrisWidth = 100;
             yDebrisLength = 40;
+            isDebris = true;
         }
     }
     public int getXCollisionCoordinate()
@@ -66,6 +67,10 @@ public class Debris extends Entity {
     public int getYDebrisLength()
     {
         return yDebrisLength;
+    }
+    public boolean isDebris()
+    {
+        return isDebris;
     }
     @Override
     public void draw(Graphics window) {

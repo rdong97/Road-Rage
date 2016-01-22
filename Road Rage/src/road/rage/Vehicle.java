@@ -31,6 +31,18 @@ public abstract class Vehicle extends Entity{
         maxHealth = mh;
         
     }
+    public int getXSpeed() {
+        return xSpeed;
+    }
+    public int getYSpeed() {
+        return ySpeed;
+    }
+    public void setXSpeed(int x) {
+        xSpeed = x;
+    }
+    public void setYSpeed(int y) {
+        ySpeed = y;
+    }
     public abstract void findNextLocation();
     @Override
     public abstract void draw(Graphics window); 
