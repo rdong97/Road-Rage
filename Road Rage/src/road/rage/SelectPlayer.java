@@ -27,7 +27,6 @@ public class SelectPlayer extends JPanel {
     private JFrame selectScreen;
     private ArrayList<PlayerProfile>playerList;
     private Font font;
-    private SaveLoad saveLoad;
     private ImageIcon backgroundImage;
     
     /**
@@ -37,7 +36,6 @@ public class SelectPlayer extends JPanel {
     {
         try
         {
-            saveLoad = new SaveLoad();
             font = new Font("Arial", Font.PLAIN, 12);//set font
             selectScreen.setSize(405, 130);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
@@ -49,13 +47,13 @@ public class SelectPlayer extends JPanel {
             selectScreen.setVisible(true);
             this.setLayout(null);
             backgroundImage = new ImageIcon(ImageManager.getImage(66).getScaledInstance(100, 100, 0));//background added
-            playerList = saveLoad.getProfiles();//retrieves profiles from file
+            playerList = SaveLoad.getProfiles();//retrieves profiles from file
             if(playerList.size()<4)
             { 
                 int currentSize = playerList.size();
                 for(int i=currentSize;i<4;i++)
                 {
-                    playerList.add(new PlayerProfile("New Player",0,100,100));
+                    playerList.add(new PlayerProfile("Player "+i,0,100,100));
                 }
             }
             for(int i=0;i<4;i++)

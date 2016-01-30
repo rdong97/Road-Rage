@@ -20,14 +20,9 @@ import java.util.Scanner;
  */
 public class SaveLoad {
     
-    private ArrayList<PlayerProfile>profileList;
-    
-    public SaveLoad() {
-        profileList = new ArrayList<PlayerProfile>();
-    }
-    
-    public ArrayList<PlayerProfile> getProfiles()
+    public static ArrayList<PlayerProfile> getProfiles()
     {
+        ArrayList<PlayerProfile>profileList= new ArrayList<PlayerProfile>();
         try 
         {
             File f = new File("profiles/profiles.dat");//set path to file
@@ -62,7 +57,7 @@ public class SaveLoad {
         }
         return null;//if no profiles to return
     }
-    public void saveProfileList(ArrayList<PlayerProfile>list) {
+    public static void saveProfileList(ArrayList<PlayerProfile>list) {
        
         ArrayList<PlayerProfile> profileList = list;
         try 
@@ -85,5 +80,14 @@ public class SaveLoad {
         {
             ErrorLogger.logRuntimeError("Unknown error, unable to save profile", ex);
         }
+    }
+    public static void updateSaveProfile(PlayerProfile profile) {
+        ArrayList<PlayerProfile>list = getProfiles();
+        for(int i=0;i<list.size();i++) {
+            if(list.get(i).getName().equals(profile.getName())) {
+                list.set(i, profile);
+            }
+        }
+        saveProfileList(list);
     }
 }
