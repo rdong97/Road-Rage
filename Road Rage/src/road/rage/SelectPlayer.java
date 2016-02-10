@@ -27,7 +27,6 @@ public class SelectPlayer extends JPanel {
     private JFrame selectScreen;
     private ArrayList<PlayerProfile>playerList;
     private Font font;
-    private ImageIcon backgroundImage;
     
     /**
      * Creates frame for selecting player slot.
@@ -36,8 +35,9 @@ public class SelectPlayer extends JPanel {
     {
         try
         {
+            selectScreen = new JFrame();
             font = new Font("Arial", Font.PLAIN, 12);//set font
-            selectScreen.setSize(405, 130);
+            selectScreen.setSize(400, 200);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
             selectScreen.setLocation((int)(screenSize.getWidth()/2)-200,(int)(screenSize.getHeight()/2)-100);//set location to center
             selectScreen.setTitle("Select User");//title
@@ -46,15 +46,22 @@ public class SelectPlayer extends JPanel {
             selectScreen.repaint();//paints on info
             selectScreen.setVisible(true);
             this.setLayout(null);
-            backgroundImage = new ImageIcon(ImageManager.getImage(66).getScaledInstance(100, 100, 0));//background added
+            
             playerList = SaveLoad.getProfiles();//retrieves profiles from file
-            if(playerList.size()<4)
-            { 
-                int currentSize = playerList.size();
-                for(int i=currentSize;i<4;i++)
+            if(playerList == null) {
+                for(int i=1;i<5;i++)
                 {
                     playerList.add(new PlayerProfile("Player "+i,0,100,100));
                 }
+                SaveLoad.saveProfileList(playerList);
+            }
+            else if(playerList.size() < 4) {
+                int currentSize = playerList.size();
+                for(int i=currentSize+1;i<5;i++)
+                {
+                    playerList.add(new PlayerProfile("Player "+i,0,100,100));
+                }
+                SaveLoad.saveProfileList(playerList);
             }
             for(int i=0;i<4;i++)
             {
@@ -74,10 +81,10 @@ public class SelectPlayer extends JPanel {
     {
         try
         {
-            JButton button = new JButton(backgroundImage);
+            JButton button = new JButton();
             //draws out the player name onto buttone
             button.setBorderPainted(false);
-            button.setContentAreaFilled(false);
+            button.setContentAreaFilled(true);
             button.setHorizontalTextPosition(SwingConstants.CENTER);
             button.setText("<html>" + p.getName() + "</html>");
             button.setFont(font);
@@ -88,7 +95,7 @@ public class SelectPlayer extends JPanel {
                 public void actionPerformed(ActionEvent e) 
                 {
                     selectScreen.dispose();
-                    //do some action to start game
+                    Store storeScreen = new Store(p);
                 }
             });
             button.setBounds(100*slot, 0, 100, 100);//set location

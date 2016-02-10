@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,15 +27,15 @@ public class Store extends JPanel{
     private PlayerProfile playerProfile;
     private JFrame storeScreen;
     private Font font;
-    private SaveLoad saveLoad;
-    private ImageIcon backgroundImage;
+
     
     public Store(PlayerProfile p) {
         try
         {
+            storeScreen = new JFrame();
             playerProfile = p;
             font = new Font("Arial", Font.PLAIN, 12);//set font
-            storeScreen.setSize(405, 130);
+            storeScreen.setSize(400, 200);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
             storeScreen.setLocation((int)(screenSize.getWidth()/2)-200,(int)(screenSize.getHeight()/2)-100);//set location to center
             storeScreen.setTitle("Store");//title
@@ -45,7 +44,7 @@ public class Store extends JPanel{
             storeScreen.repaint();//paints on info
             storeScreen.setVisible(true);
             this.setLayout(null);
-            backgroundImage = new ImageIcon(ImageManager.getImage(66).getScaledInstance(100, 100, 0));//background added
+            updateInfo();
             createButtons();
         }
         catch(Exception ex)
@@ -56,13 +55,13 @@ public class Store extends JPanel{
     public void updateInfo() {
         //write new info
         JLabel score = new JLabel("Score:"+playerProfile.getScore());
-        score.setBounds(null);
+        score.setBounds(10,10,100,20);
         
         JLabel health = new JLabel("Max Health:"+playerProfile.getMaxHealth());
-        health.setBounds(null);
+        health.setBounds(10,40,100,20);
         
         JLabel ammo = new JLabel("Max Ammo:"+playerProfile.getMaxAmmo());
-        ammo.setBounds(null);
+        ammo.setBounds(10,70,100,20);
         
         this.add(score);
         this.add(health);
@@ -75,12 +74,12 @@ public class Store extends JPanel{
     }
     
     public void createButtons() {
-        JButton upgradeHealthButton = new JButton(backgroundImage);
+        JButton upgradeHealthButton = new JButton();
         //draws out the upgrade health onto button
         upgradeHealthButton.setBorderPainted(false);
-        upgradeHealthButton.setContentAreaFilled(false);
+        upgradeHealthButton.setContentAreaFilled(true);
         upgradeHealthButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        upgradeHealthButton.setText("<html>" + "Upgrade" + "</html>");
+        upgradeHealthButton.setText("Upgrade Max Health");
         upgradeHealthButton.setFont(font);
         upgradeHealthButton.setForeground(Color.black);
         upgradeHealthButton.addActionListener(new ActionListener() 
@@ -95,16 +94,16 @@ public class Store extends JPanel{
                 updateInfo();
             }
         });
-        upgradeHealthButton.setBounds(300, 20, 40, 20);//set location
+        upgradeHealthButton.setBounds(200, 40, 200, 20);//set location
         this.add(upgradeHealthButton);//add to frame.
 
 
-        JButton upgradeAmmoButton = new JButton(backgroundImage);
+        JButton upgradeAmmoButton = new JButton();
         //draws out the upgrade health onto button
         upgradeAmmoButton.setBorderPainted(false);
-        upgradeAmmoButton.setContentAreaFilled(false);
+        upgradeAmmoButton.setContentAreaFilled(true);
         upgradeAmmoButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        upgradeAmmoButton.setText("<html>" + "Upgrade" + "</html>");
+        upgradeAmmoButton.setText("Upgrade Max Ammo");
         upgradeAmmoButton.setFont(font);
         upgradeAmmoButton.setForeground(Color.black);
         upgradeAmmoButton.addActionListener(new ActionListener() 
@@ -119,8 +118,29 @@ public class Store extends JPanel{
                 updateInfo();
             }
         });
-        upgradeAmmoButton.setBounds(300, 60, 40, 20);//set location
-        this.add(upgradeHealthButton);//add to frame.
+        upgradeAmmoButton.setBounds(200, 70, 200, 20);//set location
+        this.add(upgradeAmmoButton);//add to frame.
+        
+        
+        JButton startGame = new JButton();
+        //draws out the upgrade health onto button
+        startGame.setBorderPainted(false);
+        startGame.setContentAreaFilled(true);
+        startGame.setHorizontalTextPosition(SwingConstants.CENTER);
+        startGame.setText("Start Game");
+        startGame.setFont(font);
+        startGame.setForeground(Color.black);
+        startGame.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                GameRunner newGame = new GameRunner();
+                newGame.launchRun(playerProfile);
+            }
+        });
+        startGame.setBounds(200, 10, 200, 20);//set location
+        this.add(startGame);//add to frame.
     }
 }
 

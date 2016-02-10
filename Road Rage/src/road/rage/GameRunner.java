@@ -5,13 +5,10 @@
  */
 package road.rage;
 
-import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -41,7 +38,7 @@ public class GameRunner extends JPanel {
     private String playerName;
     private int score, ammo, maxAmmo, health, maxHealth;
     
-    public void launchRun()
+    public void launchRun(PlayerProfile p)
     {
         MainMenu.closeMenu();
         GameRunner.gameFrame = new JFrame();

@@ -27,7 +27,7 @@ import javax.swing.plaf.FontUIResource;
 public class MainMenu extends JPanel {
     
     private static JFrame menuFrame;
-    private JButton play, tutorial, store, credits, highScore, next, back, exit;  
+    private JButton play, tutorial, credits, highScore, next, back, exit;  
     private Color blackStartFilter = new Color(0.0f,0.0f,0.0f,1.0f);
     
     public void startMenu() {
@@ -81,8 +81,7 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
-                   // SoundFX.playFX("Select");
-                   // SelectPlayer p = new SelectPlayer();//opens select player menu
+                    SelectPlayer selectScreen = new SelectPlayer();
                 }
             });
             //add tutorial button        
@@ -102,21 +101,7 @@ public class MainMenu extends JPanel {
                     //g.start("Tutorial", -1);
                 }
             });
-            //add store button
-            store = new JButton("Store");
-            store.setBorder(BorderFactory.createEmptyBorder());
-            store.setContentAreaFilled(true);
-            store.setHorizontalTextPosition(JButton.CENTER);
-            store.setVerticalTextPosition(JButton.CENTER);
-            store.setFont(font);
-            store.setForeground(buttonColor);
-            store.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) 
-                {
-                    //launch store
-                }
-            });
+            
             //add high scores button        
             highScore = new JButton("High Scores");
             highScore.setBorder(BorderFactory.createEmptyBorder());
@@ -195,13 +180,12 @@ public class MainMenu extends JPanel {
             this.add(play);
             tutorial.setBounds(3*menuFrame.getWidth()/5, menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(tutorial);
-            store.setBounds(menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
-            this.add(store);
-            highScore.setBounds(3*menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
+            highScore.setBounds(menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(highScore);
-            credits.setBounds(menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
+            credits.setBounds(3*menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(credits);
-            exit.setBounds(3*menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
+
+            exit.setBounds(2*menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(exit);   
         }
         catch(Exception ex)

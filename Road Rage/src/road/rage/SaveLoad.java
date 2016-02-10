@@ -25,7 +25,7 @@ public class SaveLoad {
         ArrayList<PlayerProfile>profileList= new ArrayList<PlayerProfile>();
         try 
         {
-            File f = new File("profiles/profiles.dat");//set path to file
+            File f = new File("profiles/profiles.txt");//set path to file
             if(f.exists())
             {
                 Scanner lineScanner = new Scanner(new FileReader(f));
@@ -62,8 +62,8 @@ public class SaveLoad {
         ArrayList<PlayerProfile> profileList = list;
         try 
         {
-            File f = new File("profiles/profiles.dat");//set file path
-            BufferedWriter out = new BufferedWriter(new FileWriter(new File("profiles/profiles.dat")));//set file path
+            File f = new File("profiles/profiles.txt");//set file path
+            BufferedWriter out = new BufferedWriter(new FileWriter(f));//set file path
             for(PlayerProfile p:profileList)
             {
                 out.write(p.getName()+","+p.getScore()+","+p.getMaxAmmo()+","+p.getMaxHealth());
