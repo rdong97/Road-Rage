@@ -12,9 +12,6 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.TreeMap;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +26,7 @@ import javax.swing.plaf.FontUIResource;
  */
 public class MainMenu extends JPanel {
     
-    private static JFrame menuFrame = new JFrame();
+    private static JFrame menuFrame;
     private JButton play, tutorial, store, credits, highScore, next, back, exit;  
     private Color blackStartFilter = new Color(0.0f,0.0f,0.0f,1.0f);
     
@@ -48,15 +45,17 @@ public class MainMenu extends JPanel {
         menuFrame.setSize((int)menuWidth, (int)menuHeight);
         //set title, exit and size buttons.
         menuFrame.setTitle("Road Rage");
+        menuFrame.setResizable(false);
         menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         menuFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        menuFrame.setIconImage(ImageManager.getImage(86));
+        menuFrame.setIconImage(ImageManager.getImage(0));
         //start painting screen onto frame.
         menuFrame.getContentPane().add(this);
         //startTime = System.currentTimeMillis();//have default start time for comparison
         menuFrame.setVisible(true);
         //BackgroundMusic.play("Race_Car_Music");//start music
         EventLogger.logEvent("Game menu load successful");//log menu load
+        addButtons();
         menuFrame.repaint();//start updatin graphics
     }
     public void addButtons()
@@ -71,7 +70,7 @@ public class MainMenu extends JPanel {
             //create first play button
             play = new JButton("Play");
             play.setBorder(BorderFactory.createEmptyBorder());
-            play.setContentAreaFilled(false);
+            play.setContentAreaFilled(true);
             play.setHorizontalTextPosition(JButton.CENTER);
             play.setVerticalTextPosition(JButton.CENTER);
             play.setFont(font);
@@ -89,7 +88,7 @@ public class MainMenu extends JPanel {
             //add tutorial button        
             tutorial = new JButton("Tutorial");
             tutorial.setBorder(BorderFactory.createEmptyBorder());
-            tutorial.setContentAreaFilled(false);
+            tutorial.setContentAreaFilled(true);
             tutorial.setHorizontalTextPosition(JButton.CENTER);
             tutorial.setVerticalTextPosition(JButton.CENTER);
             tutorial.setFont(font);
@@ -106,7 +105,7 @@ public class MainMenu extends JPanel {
             //add store button
             store = new JButton("Store");
             store.setBorder(BorderFactory.createEmptyBorder());
-            store.setContentAreaFilled(false);
+            store.setContentAreaFilled(true);
             store.setHorizontalTextPosition(JButton.CENTER);
             store.setVerticalTextPosition(JButton.CENTER);
             store.setFont(font);
@@ -121,7 +120,7 @@ public class MainMenu extends JPanel {
             //add high scores button        
             highScore = new JButton("High Scores");
             highScore.setBorder(BorderFactory.createEmptyBorder());
-            highScore.setContentAreaFilled(false);
+            highScore.setContentAreaFilled(true);
             highScore.setHorizontalTextPosition(JButton.CENTER);
             highScore.setVerticalTextPosition(JButton.CENTER);
             highScore.setFont(fontSmall);
@@ -147,7 +146,7 @@ public class MainMenu extends JPanel {
            //create credits button.         
            credits = new JButton("Credits");
            credits.setBorder(BorderFactory.createEmptyBorder());
-           credits.setContentAreaFilled(false);
+           credits.setContentAreaFilled(true);
            credits.setHorizontalTextPosition(JButton.CENTER);
            credits.setVerticalTextPosition(JButton.CENTER);
            credits.setFont(font);
@@ -157,7 +156,7 @@ public class MainMenu extends JPanel {
                             public void actionPerformed(ActionEvent e) {
                       //          SoundFX.playFX("Select");
                                  JOptionPane.showMessageDialog(null, "                                                Credits\n"
-                                         + "                                Developed By The Techs\n"
+                                         + "                  Developed By BlackBird Mafia Studios\n"
                                          + "Project Manager:                Richard Dong\n"
                                          + "Lead Developer:                 Richard Dong\n"
                                          + "Graphics Manager:     George Zhang and Kenneth Wang\n"
@@ -176,7 +175,7 @@ public class MainMenu extends JPanel {
             //create exit button.       
             exit = new JButton("Exit");
             exit.setBorder(BorderFactory.createEmptyBorder());
-            exit.setContentAreaFilled(false);
+            exit.setContentAreaFilled(true);
             exit.setHorizontalTextPosition(JButton.CENTER);
             exit.setVerticalTextPosition(JButton.CENTER);
             exit.setFont(font);
@@ -191,18 +190,18 @@ public class MainMenu extends JPanel {
                 }
             });
             //set positions and size of buttons, which change with screen size; add to screen. 
-            play.setBounds(menuFrame.getWidth()/4, menuFrame.getHeight()/4, menuFrame.getWidth()/2, menuFrame.getHeight()/16);
+            play.setBounds(menuFrame.getWidth()/5, menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.setLayout(null);
             this.add(play);
-            tutorial.setBounds(menuFrame.getWidth()/4, menuFrame.getHeight()/4+(3*(menuFrame.getHeight()/16)), menuFrame.getWidth()/2, menuFrame.getHeight()/16);
+            tutorial.setBounds(3*menuFrame.getWidth()/5, menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(tutorial);
-            store.setBounds(menuFrame.getWidth()/4, menuFrame.getHeight()/4+(5*(menuFrame.getHeight()/16)), menuFrame.getWidth()/2, menuFrame.getHeight()/16);
-            this.add(tutorial);
-            highScore.setBounds(menuFrame.getWidth()/4, menuFrame.getHeight()/4+(7*(menuFrame.getHeight()/16)), menuFrame.getWidth()/2, menuFrame.getHeight()/16);
+            store.setBounds(menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
+            this.add(store);
+            highScore.setBounds(3*menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(highScore);
-            credits.setBounds(menuFrame.getWidth()/4, menuFrame.getHeight()/4+(9*(menuFrame.getHeight()/16)), menuFrame.getWidth()/2, menuFrame.getHeight()/16);
+            credits.setBounds(menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(credits);
-            exit.setBounds((int)(menuFrame.getWidth()/4), menuFrame.getHeight()/4+(11*(menuFrame.getHeight()/16)), menuFrame.getWidth()/2, menuFrame.getHeight()/16);
+            exit.setBounds(3*menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(exit);   
         }
         catch(Exception ex)
@@ -210,7 +209,18 @@ public class MainMenu extends JPanel {
             ErrorLogger.logRuntimeError("Could not create menu buttons",ex);
         }   
     }
-
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        
+        try {
+            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+        }
+        catch(Exception ex) {
+            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+        }
+        repaint();//refresh screen
+    }
 
     /**
      * Closes the menu.

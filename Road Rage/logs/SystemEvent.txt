@@ -1,0 +1,112 @@
+Feb 09, 2016 7:48:35 PM road.rage.EventLogger logEvent
+INFO: Runtime Error occurred, warning message displayed: Unknown error, unable to import graphics
+
+
+Feb 09, 2016 7:48:44 PM road.rage.EventLogger logEvent
+INFO: User selected to exit the game after RuntimeError
+
+
+Feb 09, 2016 7:48:44 PM road.rage.EventLogger logEvent
+INFO: Game Crashed
+
+
+Feb 09, 2016 7:49:27 PM road.rage.EventLogger logEvent
+INFO: Runtime Error occurred, warning message displayed: Unknown error, unable to import graphics
+
+
+Feb 09, 2016 7:49:31 PM road.rage.EventLogger logEvent
+INFO: User selected to exit the game after RuntimeError
+
+
+Feb 09, 2016 7:49:31 PM road.rage.EventLogger logEvent
+INFO: Game Crashed
+
+
+Feb 09, 2016 7:50:11 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:50:11 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:54:37 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:54:37 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:55:37 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:55:37 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:55:57 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:55:57 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:56:54 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:56:54 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:58:11 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:58:11 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 7:58:32 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 7:58:32 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 8:00:13 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 8:00:13 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 8:04:08 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 8:04:08 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 8:04:39 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 8:04:39 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 09, 2016 8:05:16 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 09, 2016 8:05:16 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+

@@ -24,18 +24,18 @@ public class ImageManager
         try 
         {
             //skins
-            images.add(ImageIO.read(ImageManager.class.getResource(""))); //0
-            images.add(ImageIO.read(ImageManager.class.getResource(""))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Menu.png"))); //0
+            //images.add(ImageIO.read(ImageManager.class.getResource(""))); //1
             
             //tutorials
             for(int i = 1; i <= 7; i++)
             {
-                images.add(ImageIO.read(ImageManager.class.getResource("Tutorial_" + i + ".PNG")));
+               // images.add(ImageIO.read(ImageManager.class.getResource("Tutorial_" + i + ".PNG")));
             }
             
             //entities
-            images.add(ImageIO.read(ImageManager.class.getResource(""))); //0
-            images.add(ImageIO.read(ImageManager.class.getResource(""))); //1
+            //images.add(ImageIO.read(ImageManager.class.getResource(""))); //0
+            //images.add(ImageIO.read(ImageManager.class.getResource(""))); //1
 
             Thread.sleep(10);    
             EventLogger.logEvent("Images successfully loaded");

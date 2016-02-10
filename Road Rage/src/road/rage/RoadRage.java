@@ -19,6 +19,7 @@ public class RoadRage {
      */
     public static void main(String[] args) {
         MainMenu newMenu = new MainMenu();
+        newMenu.startMenu();
     }
     
 }

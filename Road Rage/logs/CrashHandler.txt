@@ -1,0 +1,16 @@
+Feb 09, 2016 7:48:44 PM road.rage.CrashLogger logCrash
+SEVERE: Game crashed: Unknown error, unable to import graphics
+java.lang.IllegalArgumentException: input == null!
+	at javax.imageio.ImageIO.read(ImageIO.java:1388)
+	at road.rage.ImageManager.importAll(ImageManager.java:27)
+	at road.rage.MainMenu.startMenu(MainMenu.java:37)
+	at road.rage.RoadRage.main(RoadRage.java:22)
+
+Feb 09, 2016 7:49:31 PM road.rage.CrashLogger logCrash
+SEVERE: Game crashed: Unknown error, unable to import graphics
+java.lang.IllegalArgumentException: input == null!
+	at javax.imageio.ImageIO.read(ImageIO.java:1388)
+	at road.rage.ImageManager.importAll(ImageManager.java:27)
+	at road.rage.MainMenu.startMenu(MainMenu.java:37)
+	at road.rage.RoadRage.main(RoadRage.java:22)
+
