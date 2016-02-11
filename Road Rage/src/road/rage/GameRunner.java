@@ -38,7 +38,9 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     
     private HUD hud;
     private Road road;
-    public static boolean[] keysPressed= new boolean[4]; //A, D, left, right
+    public static boolean[] keysPressed; //A, D, left, right
+    public static Point hitPoint;
+    public static boolean gunShot;
     private String playerName;
     private int score, ammo, maxAmmo, health, maxHealth;
     
@@ -63,7 +65,9 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         gameFrame.setVisible(true);
         gameFrame.addKeyListener(this);
         gameFrame.addMouseListener(this);
-
+        keysPressed = new boolean[4];
+        hitPoint = new Point(0,0);
+        gunShot = false;
         startPaint();
     }
     public void startPaint()
@@ -153,11 +157,8 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     public void mouseClicked(MouseEvent e) {
         int screenX = e.getX();
         int screenY = e.getY();
-        Point hitPoint = new Point();
-        if(ammo>0) {
-            hitPoint.move(screenX,screenY);
-            ammo--;
-        }
+        hitPoint.move(screenX,screenY);
+        gunShot = true; //set to false in check collisions
         System.out.println(screenX+" "+screenY);
     }
 

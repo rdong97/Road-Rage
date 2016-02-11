@@ -110,7 +110,7 @@ public class Road {
             
         }
         
-        //Due to staggered enemy locations, only a max of 2 enemies can be hit at the same time
+        //Due to staggered enemy locations, only a max of 2 enemies can be collided with hunter at the same time
         Enemy toRemove1 = null;
         Enemy toRemove2 = null;
         for(Enemy e:enemyList) {
@@ -139,6 +139,20 @@ public class Road {
         {
             removeEnemy(toRemove2);
         }
+        Enemy receivedHit = null;
+        if(GameRunner.gunShot==true) {
+            for(Enemy e:enemyList) {
+                if(GameRunner.hitPoint.x<e.getXCoordinate()+e.getXWidth()&&GameRunner.hitPoint.x>e.getXCoordinate()) {
+                   if(GameRunner.hitPoint.y<e.getXCoordinate()+e.getYLength()&&GameRunner.hitPoint.y>e.getYCoordinate()) {
+                       receivedHit = e; //only one enemy in location, jump out of loop
+                   }
+                }
+            }
+        }
+        if(receivedHit!=null) {
+            removeEnemy(receivedHit);
+        }
+        GameRunner.gunShot = false; 
     }
     public void updateEntityLocations() {
         if(hasGameEnded()) {
