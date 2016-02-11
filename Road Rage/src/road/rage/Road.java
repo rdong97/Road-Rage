@@ -21,20 +21,28 @@ public class Road {
     
     public Road() {
         hunter = new Hunter();  
+        hunter.startIncrementalTimers();
         debrisList = new ArrayList<Debris>();
-        //add starting default debris
+        spawnInitialDebris();
         enemyList = new ArrayList<Enemy>();
     }
+    public void spawnInitialDebris() {
+        debrisList.add(new Debris(0,-600,0,0,0));
+        debrisList.add(new Debris(0,-300,0,0,0));
+        debrisList.add(new Debris(0,0,0,0,0));
+        debrisList.add(new Debris(0,300,0,0,0));
+    }
+    
     public void spawnDebris() {
         int randomType = (int)(Math.random()*4+1);
-        debrisList.add(new Debris(0,0,0,0,randomType));
+        debrisList.add(new Debris(0,-600,0,0,randomType));
     }
     public void spawnEnemy() {
         //new enemy from list, calculate from hunter location
     }
     public boolean hasGameEnded() {
         for(Enemy e:enemyList) {
-            if(e.getYCoordinate()<300-e.getYLength()) {
+            if(e.getYCoordinate()-e.getYLength()<0) {
                 return true;
             }
         }
@@ -44,7 +52,7 @@ public class Road {
     public void removeDebris() {
         Debris toRemove = null;
         for(Debris d:debrisList) {
-            if(d.getXCoordinate()<=0) {
+            if(d.getYCoordinate()>=300) {
                 toRemove = d;
             }
         }
@@ -133,6 +141,13 @@ public class Road {
         }
     }
     public void updateEntityLocations() {
+        if(hasGameEnded()) {
+         //game end   
+        }
+        
+        removeDebris();
+        checkCollisions();
+        hunter.findXSpeed();
         hunter.findNextLocation();
         for(Enemy e:enemyList) {
             e.findXSpeed(debrisList);
@@ -144,7 +159,8 @@ public class Road {
     }
     
     public void draw(Graphics window) {
-        hunter.draw(window);
+        hunter.draw(window);        
+        removeDebris();
         for(Debris d: debrisList) {
             d.draw(window);
         }

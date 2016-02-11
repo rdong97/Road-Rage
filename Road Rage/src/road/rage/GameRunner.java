@@ -9,8 +9,13 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +25,7 @@ import javax.swing.Timer;
  *
  * @author Richard
  */
-public class GameRunner extends JPanel {
+public class GameRunner extends JPanel implements KeyListener, MouseListener{
     
     public static JFrame gameFrame;//frame for game
     private static Timer timer;//times the refresh rate
@@ -28,13 +33,12 @@ public class GameRunner extends JPanel {
     private long startTime;
     private long updateTime = 0;
     private int eventTime = 900;
-    private boolean introPlaying = false;
-    private boolean tutorialPlaying = false;
     private final Color blackStartFilter = new Color(0.0f,0.0f,0.0f,0.0f);
     private BufferedImage back;//backdrop where images are drawn
     
     private HUD hud;
     private Road road;
+    public static boolean[] keysPressed= new boolean[4]; //A, D, left, right
     private String playerName;
     private int score, ammo, maxAmmo, health, maxHealth;
     
@@ -57,7 +61,8 @@ public class GameRunner extends JPanel {
         gameFrame.setLocation(0, 0);//top left corner
         gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
         gameFrame.setVisible(true);
-        //gameFrame.addKeyListener(this);
+        gameFrame.addKeyListener(this);
+        gameFrame.addMouseListener(this);
 
         startPaint();
     }
@@ -108,4 +113,64 @@ public class GameRunner extends JPanel {
         }
         repaint();//redo again in loop
     }  
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       
+        if(e.getKeyCode() == KeyEvent.VK_A) {
+           keysPressed[0] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_D) {
+           keysPressed[1] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+           keysPressed[2] = true;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+           keysPressed[3] = true;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_A) {
+           keysPressed[0] = false;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_D) {
+           keysPressed[1] = false;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+           keysPressed[2] = false;
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+           keysPressed[3] = false;
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int screenX = e.getX();
+        int screenY = e.getY();
+        Point hitPoint = new Point();
+        if(ammo>0) {
+            hitPoint.move(screenX,screenY);
+            ammo--;
+        }
+        System.out.println(screenX+" "+screenY);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {} 
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }

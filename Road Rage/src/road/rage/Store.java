@@ -8,6 +8,7 @@ package road.rage;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,10 +59,10 @@ public class Store extends JPanel{
         score.setBounds(10,10,100,20);
         
         JLabel health = new JLabel("Max Health:"+playerProfile.getMaxHealth());
-        health.setBounds(10,40,100,20);
+        health.setBounds(10,100,100,20);
         
         JLabel ammo = new JLabel("Max Ammo:"+playerProfile.getMaxAmmo());
-        ammo.setBounds(10,70,100,20);
+        ammo.setBounds(10,140,100,20);
         
         this.add(score);
         this.add(health);
@@ -71,6 +72,18 @@ public class Store extends JPanel{
         
         SaveLoad.updateSaveProfile(playerProfile);
         
+    }
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        
+        try {
+            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+        }
+        catch(Exception ex) {
+            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+        }
+        repaint();//refresh screen
     }
     
     public void createButtons() {
@@ -94,7 +107,7 @@ public class Store extends JPanel{
                 updateInfo();
             }
         });
-        upgradeHealthButton.setBounds(200, 40, 200, 20);//set location
+        upgradeHealthButton.setBounds(200, 100, 200, 20);//set location
         this.add(upgradeHealthButton);//add to frame.
 
 
@@ -118,7 +131,7 @@ public class Store extends JPanel{
                 updateInfo();
             }
         });
-        upgradeAmmoButton.setBounds(200, 70, 200, 20);//set location
+        upgradeAmmoButton.setBounds(200, 140, 200, 20);//set location
         this.add(upgradeAmmoButton);//add to frame.
         
         
@@ -135,6 +148,7 @@ public class Store extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                storeScreen.dispose();
                 GameRunner newGame = new GameRunner();
                 newGame.launchRun(playerProfile);
             }

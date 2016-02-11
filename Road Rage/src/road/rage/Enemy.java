@@ -70,8 +70,7 @@ public class Enemy extends Vehicle{
     @Override
     public void draw(Graphics window) {
         int imageNum = 0;//will change based on skin
-        int screenX = CoordinateConverter.xToScreenCoordinate(xCoordinate);
-        int screenY = CoordinateConverter.yToScreenCoordinate(yCoordinate);
-        window.drawImage(ImageManager.getImage(imageNum),screenX, screenY, null);
+
+        window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), null);
     }
 }

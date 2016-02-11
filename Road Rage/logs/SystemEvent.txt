@@ -818,3 +818,571 @@ Feb 09, 2016 9:23:52 PM road.rage.EventLogger logEvent
 INFO: New profile saved in list successfully
 
 
+Feb 10, 2016 7:53:03 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 7:53:04 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 7:53:06 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:53:14 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:53:14 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 7:54:54 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 7:54:55 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 7:54:57 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:55:05 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:55:05 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 7:56:51 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 7:56:51 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 7:56:53 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:57:06 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:57:06 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 7:58:29 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 7:58:29 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 7:58:31 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:58:33 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:58:33 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 7:58:40 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 7:58:40 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 7:59:58 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 7:59:58 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:00:00 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:00:01 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:00:01 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:03:05 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:03:05 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:03:08 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:03:10 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:03:10 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:09:59 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:10:00 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:10:01 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:10:02 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:10:02 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:14:09 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:14:09 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:14:10 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:14:12 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:14:12 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:15:32 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:15:32 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:15:33 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:15:35 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:15:35 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:21:22 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:21:22 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:21:24 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:21:26 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:21:26 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:23:16 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:23:16 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:23:17 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:23:19 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:23:19 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:36:06 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:36:06 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:36:08 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:36:10 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:36:10 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:40:26 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:40:26 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:40:27 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:40:28 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:40:28 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:41:04 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:41:04 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:41:06 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:41:07 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:41:07 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:41:35 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:41:35 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:41:37 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:41:38 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:41:38 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:43:20 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:43:20 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:43:21 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:43:23 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:43:23 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:48:03 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:48:03 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:48:18 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:48:19 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:48:19 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:50:43 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:50:43 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:50:45 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:50:47 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:50:47 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:52:16 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:52:16 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:52:18 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:52:19 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:52:19 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:53:47 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:53:47 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:53:49 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:53:51 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:53:51 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:54:49 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:54:49 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:54:51 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:54:52 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:54:52 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 8:55:32 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 8:55:32 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 8:55:34 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:55:36 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 8:55:36 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:01:40 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:01:41 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:01:42 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:01:44 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:01:44 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:03:17 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:03:18 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:03:19 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:03:21 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:03:21 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:04:56 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:04:56 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:04:58 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:04:59 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:04:59 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:05:33 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:05:34 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:05:35 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:05:37 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:05:37 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:06:36 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:06:36 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:06:38 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:06:39 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:06:39 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 10, 2016 9:06:55 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 10, 2016 9:06:55 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 10, 2016 9:06:56 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:06:58 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 10, 2016 9:06:58 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+

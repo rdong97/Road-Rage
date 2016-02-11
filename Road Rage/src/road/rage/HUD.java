@@ -82,16 +82,16 @@ public class HUD {
                 displayTime=displayTime.substring(0,6);
             }
         //change window coordinates later!!!!!
-        window.drawString("Time:", CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString("Score:", CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString("Health:", CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString("Ammo:", CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
+        window.drawString("Time:", 0,0);
+        window.drawString("Score:", 0,0);
+        window.drawString("Health:", 0,0);
+        window.drawString("Ammo:", 0,0);
         
         
-        window.drawString(displayTime, CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString(score+"", CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString(health+"/"+maxHealth, CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
-        window.drawString(ammo+"/"+maxAmmo, CoordinateConverter.xToScreenCoordinate(0),CoordinateConverter.yToScreenCoordinate(0));
+        window.drawString(displayTime, 0,0);
+        window.drawString(score+"", 0,0);
+        window.drawString(health+"/"+maxHealth, 0,0);
+        window.drawString(ammo+"/"+maxAmmo, 0,0);
     }
     
 }

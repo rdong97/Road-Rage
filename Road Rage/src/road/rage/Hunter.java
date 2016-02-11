@@ -12,23 +12,20 @@ package road.rage;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.Timer;
 
-public class Hunter extends Vehicle implements KeyListener{
+public class Hunter extends Vehicle {
     
     private int health, maxHealth, xSpeed, ySpeed;
     private int vehicleType, ammo, maxAmmo, score;
-    private boolean[] keysPressed;
+    
     private Timer timer;
-    private Gunner gunner;
     
     public Hunter()
     {
         super();
-        xCoordinate = 190;//positon
-        yCoordinate = 540;//540 to 580, final
+        xCoordinate = 440;//positon
+        yCoordinate = 600;//position
         
         xWidth = 20;//size
         yLength = 40;
@@ -46,9 +43,6 @@ public class Hunter extends Vehicle implements KeyListener{
         
         score = 0;
         
-        keysPressed = new boolean[4]; //A, D, left, right
-        
-        gunner = new Gunner();
     }
     public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int a, int ma, int s)
     {
@@ -61,9 +55,6 @@ public class Hunter extends Vehicle implements KeyListener{
         
         score = s;
         
-        keysPressed = new boolean[4]; //A, D, left, right
-        
-        gunner = new Gunner(a,ma);
     }
 
     public int getHealth() {
@@ -102,7 +93,7 @@ public class Hunter extends Vehicle implements KeyListener{
     public void setScore(int s) {
         score = s;
     }
-    public void startHealthIncrementalTimer() {     
+    public void startIncrementalTimers() {     
         int delay = 100;
         ActionListener task = new ActionListener() {
             @Override
@@ -111,66 +102,32 @@ public class Hunter extends Vehicle implements KeyListener{
                if(health>maxHealth) {
                    health = maxHealth;
                }
+               ammo++;
+               if(ammo>maxAmmo) {
+                   ammo = maxAmmo;
+               }
             }
         };
         timer =new Timer(delay, task);
         timer.start();
     }
     public void findXSpeed() {
-        if(keysPressed[0]||keysPressed[2]) {
+        setXSpeed(0);
+        if(GameRunner.keysPressed[0]||GameRunner.keysPressed[2]) {
             if(getXCoordinate()>=10) {
-                setXSpeed(-10);
-                setXCoordinate(getXCoordinate()+getXSpeed());                
+                setXSpeed(-10);              
             }
         }
-        if(keysPressed[1]||keysPressed[3]) {
-            if(getXCoordinate()<=290) {
-                setXSpeed(10);
-                setXCoordinate(getXCoordinate()+getXSpeed());                
+        
+        if(GameRunner.keysPressed[1]||GameRunner.keysPressed[3]) {
+            if(getXCoordinate()<=890) {
+                setXSpeed(10);          
             }
         }
     }
     @Override
     public void draw(Graphics window) {
-        int imageNum = 0;//will change based on skin
-        int screenX = CoordinateConverter.xToScreenCoordinate(xCoordinate);
-        int screenY = CoordinateConverter.yToScreenCoordinate(yCoordinate);
-        window.drawImage(ImageManager.getImage(imageNum),screenX, screenY, null);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-       
-        if(e.getKeyCode() == KeyEvent.VK_A) {
-           keysPressed[0] = true;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_D) {
-           keysPressed[1] = true;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-           keysPressed[2] = true;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-           keysPressed[3] = true;
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_A) {
-           keysPressed[0] = false;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_D) {
-           keysPressed[1] = false;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-           keysPressed[2] = false;
-        }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-           keysPressed[3] = false;
-        }
-    }
+        int imageNum = 1;//will change based on skin
+        window.drawImage(ImageManager.getImage(imageNum),getXCoordinate(), getYCoordinate(), getXWidth(),getYLength(), null);
+    } 
 }

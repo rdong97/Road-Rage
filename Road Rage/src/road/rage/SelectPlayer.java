@@ -8,6 +8,7 @@ package road.rage;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,7 +99,7 @@ public class SelectPlayer extends JPanel {
                     Store storeScreen = new Store(p);
                 }
             });
-            button.setBounds(100*slot, 0, 100, 100);//set location
+            button.setBounds(100*slot, 120, 100, 20);//set location
             this.add(button);//add to frame.
         }
         catch(Exception ex)
@@ -106,4 +107,16 @@ public class SelectPlayer extends JPanel {
             ErrorLogger.logRuntimeError("Could not create select player buttons", ex);
         }
     } 
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        
+        try {
+            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+        }
+        catch(Exception ex) {
+            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+        }
+        repaint();//refresh screen
+    }
 }
