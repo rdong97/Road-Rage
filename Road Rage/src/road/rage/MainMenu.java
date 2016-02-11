@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -114,17 +115,27 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
-                    /*SoundFX.playFX("Select");
-                    TreeMap<Integer, String> t = SaveLoad.getHighScores();//calls to get high scores to display.
-                    String scores = "";
-                    for(int i = 0; i < 4; i++)
-                    {
-                        scores += t.lastEntry().getValue();
-                        scores += " " + t.lastKey() + "\n";
-                        t.pollLastEntry();
+                    ArrayList<PlayerProfile>profileList = SaveLoad.getProfiles();
+                    int maxIndex;
+                    PlayerProfile tmp;
+                    int n = profileList.size();
+                    for (int i = 0; i < n - 1; i++) {
+                        maxIndex = i;
+                        for (int j = i + 1; j < n; j++)
+                          if (profileList.get(j).getScore() > profileList.get(maxIndex).getScore()) {
+                              maxIndex = j;
+                          }              
+                        if (maxIndex != i) {
+                          tmp = profileList.get(i);
+                          profileList.set(i,profileList.get(maxIndex));
+                          profileList.set(maxIndex,tmp);
+                        }
                     }
-                    */
-           //         JOptionPane.showMessageDialog(null,scores, "Highscores" ,JOptionPane.PLAIN_MESSAGE);
+                    String message = "";
+                    for(PlayerProfile p:profileList) {
+                        message+=p.getName()+": "+p.getScore()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(menuFrame,message,"High Scores",JOptionPane.INFORMATION_MESSAGE);
                 }
             });
 
@@ -170,7 +181,6 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
-                    //SoundFX.playFX("Select");
                     System.exit(1);
                 }
             });

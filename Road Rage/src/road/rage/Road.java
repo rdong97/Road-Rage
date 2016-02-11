@@ -23,16 +23,12 @@ public class Road {
         hunter = new Hunter();  
         hunter.startIncrementalTimers();
         debrisList = new ArrayList<Debris>();
-        spawnInitialDebris();
-        enemyList = new ArrayList<Enemy>();
-    }
-    public void spawnInitialDebris() {
         debrisList.add(new Debris(0,-600,0,0,0));
         debrisList.add(new Debris(0,-300,0,0,0));
         debrisList.add(new Debris(0,0,0,0,0));
         debrisList.add(new Debris(0,300,0,0,0));
+        enemyList = new ArrayList<Enemy>();
     }
-    
     public void spawnDebris() {
         int randomType = (int)(Math.random()*4+1);
         debrisList.add(new Debris(0,-600,0,0,randomType));
