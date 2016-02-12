@@ -58,6 +58,7 @@ public class MainMenu extends JPanel {
         EventLogger.logEvent("Game menu load successful");//log menu load
         addButtons();
         menuFrame.repaint();//start updatin graphics
+        Music.play("GameMusic");
     }
     public void addButtons()
     {
