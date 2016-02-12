@@ -66,8 +66,7 @@ public abstract class Entity implements Location{
         ySpeed = y;
     }
     @Override
-    public void findNextLocation(){
-        
+    public void findNextLocation(){ 
         setXCoordinate(getXCoordinate()+getXSpeed());
         setYCoordinate(getYCoordinate()+getYSpeed());
     }

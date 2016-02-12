@@ -15,63 +15,57 @@ import java.util.ArrayList;
  */
 public class Enemy extends Vehicle{
 
-    private int enemyType;
     private ArrayList<Debris>debrisList;
     
     public Enemy() {
         super();
         debrisList = new ArrayList<Debris>();
-        enemyType = 1;
     }
-    public Enemy(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t) {
-        super(x,y,w,l,xs,ys,h,mh);
+    public Enemy(int x, int y, int xs, int ys, int w, int l, int h, int mh) {
+        super(x,y,xs,ys,w,l,h,mh);
         debrisList = new ArrayList<Debris>();
-        enemyType = t;
         
     }
     public int findXSpeed(ArrayList<Debris>list)//AI for calculating anticollision
     {
         debrisList = list;
-        Debris closest = list.get(0);
+        Debris closest = list.get(list.size()-1);
         for(Debris d:debrisList) {
-            if(d.getYCoordinate()>closest.getYCoordinate()) {
-                closest = d;
-            }
+            if(d.isDebris()) {
+                if(d.getYCollisionCoordinate()<this.getYCoordinate()) {
+                    if(d.getYCoordinate()>closest.getYCoordinate()) {
+                    closest = d;
+                    }
+                }
+            }          
         }
         if(!closest.isDebris()) {
             return 0;
         }
-        else if(closest.getDebrisType()==2) {//left debris field
-            Point trackPoint = new Point(200,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-            double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
-            double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return speedNeeded;
-        }
-        else if(closest.getDebrisType()==3) {//middle debris field
-            Point trackPoint = new Point(20,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-            double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
-            double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return speedNeeded;
-            
-        }
-        else if(closest.getDebrisType()==4) {//right debris field
-            Point trackPoint = new Point(100,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-            double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
-            double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            int speedNeeded =(int)(getYSpeed()*xDistanceNeeded/yDistanceNeeded);//slope: conversion from distance to speed
-            return speedNeeded;
-        }
         else {
-            return 0;
-        }
+            Point trackPoint = new Point(0,0);
+            if(closest.getDebrisType()==2) {//left debris field
+            trackPoint.move(650,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+            }
+            else if(closest.getDebrisType()==3) {//middle debris field
+                trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+
+            }
+            else if(closest.getDebrisType()==4) {//right debris field
+                trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+            }
+            double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
+            double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
+            double timeToMove = yDistanceNeeded/(getYSpeed()+10);
+            int speedNeeded =(int)(xDistanceNeeded/timeToMove);
+            //slope: conversion from distance to speed
+            return speedNeeded;
+        }  
     }
     
     @Override
     public void draw(Graphics window) {
-        int imageNum = 0;//will change based on skin
-
-        window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), null);
+        int imageNum = 1;//will change based on skin
+        window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), getXWidth(), getYLength(), null);
     }
 }

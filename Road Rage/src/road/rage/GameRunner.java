@@ -76,12 +76,14 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         ActionListener timerListener = new ActionListener() 
         {
                 @Override
-                public void actionPerformed(ActionEvent e){}
+                public void actionPerformed(ActionEvent e){
+                    gameFrame.repaint();
+                }
         };
         timer = new Timer(timerSpeed, timerListener);
 
         timer.start();
-        gameFrame.repaint();
+        
         gameFrame.add(this); 
 
         //system for determining start/end Y value based on difficulty, higher 
@@ -159,7 +161,6 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         int screenY = e.getY();
         hitPoint.move(screenX,screenY);
         gunShot = true; //set to false in check collisions
-        System.out.println(screenX+" "+screenY);
     }
 
     @Override

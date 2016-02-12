@@ -61,6 +61,14 @@ public class Debris extends Entity {
     {
         return yCollisionCoordinate;
     }
+    public void setXCollisionCoordinate(int x)
+    {
+        xCollisionCoordinate = x;
+    }
+    public void setYCollisionCoordinate(int y)
+    {
+        yCollisionCoordinate = y;
+    }
     public int getXDebrisWidth()
     {
         return xDebrisWidth;
@@ -75,6 +83,14 @@ public class Debris extends Entity {
     }
     public int getDebrisType() {
         return fieldType;
+    }
+    @Override
+    public void findNextLocation() {
+        setXCoordinate(getXCoordinate()+getXSpeed());
+        setYCoordinate(getYCoordinate()+getYSpeed());
+        
+        setXCollisionCoordinate(getXCollisionCoordinate()+getXSpeed());
+        setYCollisionCoordinate(getYCollisionCoordinate()+getYSpeed());
     }
     @Override
     public void draw(Graphics window) {
@@ -94,7 +110,7 @@ public class Debris extends Entity {
         else {
             imageNum = -1;
         }
-        if(getYCoordinate()>-300) {
+        if(getYCoordinate()>-450) {
             window.drawImage(ImageManager.getImage(imageNum),getXCoordinate(), getYCoordinate(), getXWidth(),getYLength(), null);
         }
         

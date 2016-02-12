@@ -27,8 +27,8 @@ public class Hunter extends Vehicle {
         xCoordinate = 440;//positon
         yCoordinate = 600;//position
         
-        xWidth = 20;//size
-        yLength = 40;
+        xWidth = 100;//size
+        yLength =200;
         
         xSpeed = 0;//movement
         ySpeed = 0;
@@ -44,7 +44,7 @@ public class Hunter extends Vehicle {
         score = 0;
         
     }
-    public Hunter(int x, int y, int w, int l, int xs, int ys, int h, int mh, int t, int a, int ma, int s)
+    public Hunter(int x, int y, int xs, int ys, int w, int l, int h, int mh, int t, int a, int ma, int s)
     {
         super(x,y,xs,ys,w,l,h,mh);
                 

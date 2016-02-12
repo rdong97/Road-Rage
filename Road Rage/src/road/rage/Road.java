@@ -7,7 +7,10 @@ package road.rage;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 /**
  *
@@ -18,24 +21,59 @@ public class Road {
     private final Hunter hunter;
     private final ArrayList<Debris>debrisList;
     private final ArrayList<Enemy>enemyList;
+    private Timer enemySpawnTimer;
+    private int spawnTime;
     
     public Road() {
         hunter = new Hunter();  
         hunter.startIncrementalTimers();
         debrisList = new ArrayList<Debris>();
-        debrisList.add(new Debris(0,-900,0,10,1));
-        debrisList.add(new Debris(0,-450,0,10,1));
-        debrisList.add(new Debris(0,0,0,10,1));
-        debrisList.add(new Debris(0,450,0,10,1));
+        debrisList.add(new Debris(0,-900,0,3,1));
+        debrisList.add(new Debris(0,-450,0,3,1));
+        debrisList.add(new Debris(0,0,0,3,1));
+        debrisList.add(new Debris(0,450,0,3,1));
         enemyList = new ArrayList<Enemy>();
+        setSpawnSpeed();
+        startSpawnEnemy();
     }
     public void spawnDebris() {
         
         int randomType = (int)(Math.random()*4+1);
-        debrisList.add(new Debris(0,-900,0,10,randomType));
+        debrisList.add(new Debris(0,-900,0,3,randomType));
     }
-    public void spawnEnemy() {
-        //new enemy from list, calculate from hunter location
+    public void setSpawnSpeed() {
+        spawnTime = 1000;
+        spawnTime-=hunter.getScore();
+    }
+    public void startSpawnEnemy() {
+        
+        ActionListener timerListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                Debris closest =debrisList.get(0);
+                for(Debris d:debrisList) {
+                    if(closest.getYCoordinate()>d.getYCoordinate()) {
+                        closest=d;
+                    }
+                }
+                if(closest.getDebrisType()==1) {
+                    enemyList.add(new Enemy(425, 1200, 0, -1, 50, 100, 100, 100));
+                }
+                else if(closest.getDebrisType()==2) {
+                    enemyList.add(new Enemy(530, 1200, 0, -1, 50, 100, 100, 100));
+                }
+                else if(closest.getDebrisType()==3) {
+                    enemyList.add(new Enemy(200, 1200, 0, -1, 50, 100, 100, 100));
+                }
+                else if(closest.getDebrisType()==4) {
+                    enemyList.add(new Enemy(230, 1200, 0, -1, 50, 100, 100, 100));
+                }
+                setSpawnSpeed();
+            }
+        };
+        enemySpawnTimer = new Timer(spawnTime, timerListener);
+
+        enemySpawnTimer.start();
     }
     public boolean hasGameEnded() {
         for(Enemy e:enemyList) {
@@ -100,7 +138,6 @@ public class Road {
                     if(p.getX()>d.getXCollisionCoordinate()&&p.getX()<d.getXCollisionCoordinate()+d.getXDebrisWidth()) {
                         if(p.getY()>d.getYCollisionCoordinate()&&p.getY()<d.getYCollisionCoordinate()+d.getYDebrisLength()) {
                             hunter.setHealth(hunter.getHealth()-5);
-                            System.out.println("reached");
                         }                
                     }
                 }  
@@ -162,7 +199,7 @@ public class Road {
         hunter.findXSpeed();
         hunter.findNextLocation();
         for(Enemy e:enemyList) {
-            e.findXSpeed(debrisList);
+            e.setXSpeed(e.findXSpeed(debrisList));
             e.findNextLocation();
         }
         for(Debris d:debrisList) {

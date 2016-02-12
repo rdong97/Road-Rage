@@ -90,7 +90,6 @@ public class TutorialSlideShow extends JPanel {
             public void actionPerformed(ActionEvent e) 
             {
                 currentSlideNumber++;
-                System.out.println(currentSlideNumber);
                 addButtons();
                 repaint();
             }
