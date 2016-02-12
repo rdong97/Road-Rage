@@ -114,13 +114,13 @@ public class Hunter extends Vehicle {
     public void findXSpeed() {
         setXSpeed(0);
         if(GameRunner.keysPressed[0]||GameRunner.keysPressed[2]) {
-            if(getXCoordinate()>=10) {
+            if(getXCoordinate()>=150) {
                 setXSpeed(-10);              
             }
         }
         
         if(GameRunner.keysPressed[1]||GameRunner.keysPressed[3]) {
-            if(getXCoordinate()<=890) {
+            if(getXCoordinate()<=750) {
                 setXSpeed(10);          
             }
         }

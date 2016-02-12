@@ -23,15 +23,16 @@ public class Road {
         hunter = new Hunter();  
         hunter.startIncrementalTimers();
         debrisList = new ArrayList<Debris>();
-        debrisList.add(new Debris(0,-600,0,0,0));
-        debrisList.add(new Debris(0,-300,0,0,0));
-        debrisList.add(new Debris(0,0,0,0,0));
-        debrisList.add(new Debris(0,300,0,0,0));
+        debrisList.add(new Debris(0,-900,0,10,1));
+        debrisList.add(new Debris(0,-450,0,10,1));
+        debrisList.add(new Debris(0,0,0,10,1));
+        debrisList.add(new Debris(0,450,0,10,1));
         enemyList = new ArrayList<Enemy>();
     }
     public void spawnDebris() {
+        
         int randomType = (int)(Math.random()*4+1);
-        debrisList.add(new Debris(0,-600,0,0,randomType));
+        debrisList.add(new Debris(0,-900,0,10,randomType));
     }
     public void spawnEnemy() {
         //new enemy from list, calculate from hunter location
@@ -48,15 +49,15 @@ public class Road {
     public void removeDebris() {
         Debris toRemove = null;
         for(Debris d:debrisList) {
-            if(d.getYCoordinate()>=300) {
+            if(d.getYCoordinate()>900) {
                 toRemove = d;
             }
         }
         if(toRemove!=null)
         {
             debrisList.remove(toRemove);
-        }
-        spawnDebris();
+            spawnDebris();
+        } 
     }
     public void removeEnemy(Enemy toMatch) {
         Enemy toRemove = null;
@@ -77,7 +78,7 @@ public class Road {
         hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()));
-        hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()+hunter.getYLength()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()+hunter.getYLength()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth()/2, hunter.getYCoordinate()));
         /*
         Hunter Damage Point Locations (denoted by '*')
@@ -99,6 +100,7 @@ public class Road {
                     if(p.getX()>d.getXCollisionCoordinate()&&p.getX()<d.getXCollisionCoordinate()+d.getXDebrisWidth()) {
                         if(p.getY()>d.getYCollisionCoordinate()&&p.getY()<d.getYCollisionCoordinate()+d.getYDebrisLength()) {
                             hunter.setHealth(hunter.getHealth()-5);
+                            System.out.println("reached");
                         }                
                     }
                 }  
@@ -169,13 +171,12 @@ public class Road {
     }
     
     public void draw(Graphics window) {
-        hunter.draw(window);        
-        removeDebris();
         for(Debris d: debrisList) {
             d.draw(window);
         }
         for(Enemy e: enemyList) {
             e.draw(window);
         }
+        hunter.draw(window);  
     }
 }

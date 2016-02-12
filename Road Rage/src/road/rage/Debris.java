@@ -18,7 +18,8 @@ public class Debris extends Entity {
     
     public Debris(int x, int y, int xs, int ys, int ft)
     {
-        super(x,y,xs,ys,300,300);
+        super(x,y,xs,ys,900,450);
+        fieldType = ft;
         if(ft == 1)
         {
             xCollisionCoordinate = 0;
@@ -30,25 +31,25 @@ public class Debris extends Entity {
         else if(ft == 2)
         {
             xCollisionCoordinate = 0;
-            yCollisionCoordinate = y+80;
-            xDebrisWidth = 100;
-            yDebrisLength = 40;
+            yCollisionCoordinate = y+210;
+            xDebrisWidth = 300;
+            yDebrisLength = 30;
             isDebris = true;
         }
         else if(ft == 3)
         {
-            xCollisionCoordinate = 200;
-            yCollisionCoordinate = y+80;
-            xDebrisWidth = 100;
-            yDebrisLength = 40;
+            xCollisionCoordinate = 300;
+            yCollisionCoordinate = y+210;
+            xDebrisWidth = 300;
+            yDebrisLength = 30;
             isDebris = true;
         }
         else if(ft == 4)
         {
-            xCollisionCoordinate = 100;
-            yCollisionCoordinate = y+800;
-            xDebrisWidth = 100;
-            yDebrisLength = 40;
+            xCollisionCoordinate = 600;
+            yCollisionCoordinate = y+210;
+            xDebrisWidth = 300;
+            yDebrisLength = 30;
             isDebris = true;
         }
     }
@@ -77,6 +78,25 @@ public class Debris extends Entity {
     }
     @Override
     public void draw(Graphics window) {
+        int imageNum;
+        if(getDebrisType()==1) {
+            imageNum = 8;
+        }
+        else if(getDebrisType()==2) {
+            imageNum = 9;
+        }
+        else if(getDebrisType()==3) {
+            imageNum = 10;
+        }
+        else if(getDebrisType()==4) {
+            imageNum = 11;
+        }
+        else {
+            imageNum = -1;
+        }
+        if(getYCoordinate()>-300) {
+            window.drawImage(ImageManager.getImage(imageNum),getXCoordinate(), getYCoordinate(), getXWidth(),getYLength(), null);
+        }
         
     }
     /*fieldtypes
@@ -94,20 +114,20 @@ public class Debris extends Entity {
     
     3. ||||||||||
        ||||||||||
-       ||||||0000
+       |||0000|||
        ||||||||||
        ||||||||||
     
     4. ||||||||||
        ||||||||||
-       |||0000|||
+       ||||||0000
        ||||||||||
        ||||||||||
     
     0 = debris
     | = nothing
-    Each field is 300 wide (x)
-    and 300 long (y)
+    Each field is 900 wide (x)
+    and 450 long (y)
     field coordinate refers to top left of screen
     debris coordinate refers to top left of hitbox
     */

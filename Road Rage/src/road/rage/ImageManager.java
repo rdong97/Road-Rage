@@ -27,16 +27,20 @@ public class ImageManager
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Menu.png"))); //0
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
             
-            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
-            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
-            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
-            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //2 tutorial
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //3
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //4
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //5
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //6
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //7
             
-            //tutorials
-            for(int i = 1; i <= 7; i++)
-            {
-               // images.add(ImageIO.read(ImageManager.class.getResource("Tutorial_" + i + ".PNG")));
-            }
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayNone.png"))); //8 highway
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayLeft.png"))); //9
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayCenter.png"))); //10
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayRight.png"))); //11
+            
+            
+
             
             //entities
             //images.add(ImageIO.read(ImageManager.class.getResource(""))); //0
