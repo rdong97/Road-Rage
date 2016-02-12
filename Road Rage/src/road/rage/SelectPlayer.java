@@ -110,7 +110,7 @@ public class SelectPlayer extends JPanel {
     @Override
     public void paintComponent(Graphics g)
     {
-        
+
         try {
             g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
         }

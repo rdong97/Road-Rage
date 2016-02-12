@@ -12,7 +12,6 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,7 +52,7 @@ public class Store extends JPanel{
             ErrorLogger.logRuntimeError("Could not select a player from frame",ex);
         }
     }
-    public void updateInfo() {
+    private void updateInfo() {
         //write new info
         JLabel score = new JLabel("Score:"+playerProfile.getScore());
         score.setBounds(10,10,100,20);
@@ -86,7 +85,7 @@ public class Store extends JPanel{
         repaint();//refresh screen
     }
     
-    public void createButtons() {
+    private void createButtons() {
         JButton upgradeHealthButton = new JButton();
         //draws out the upgrade health onto button
         upgradeHealthButton.setBorderPainted(false);

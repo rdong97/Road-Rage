@@ -27,6 +27,11 @@ public class ImageManager
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Menu.png"))); //0
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
             
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Hunter.png"))); //1
+            
             //tutorials
             for(int i = 1; i <= 7; i++)
             {

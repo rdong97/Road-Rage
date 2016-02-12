@@ -97,9 +97,7 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
-                    //SoundFX.playFX("Select");
-                    //GameRunner g = new GameRunner();
-                    //g.start("Tutorial", -1);
+                    TutorialSlideShow tutorial = new TutorialSlideShow();
                 }
             });
             
