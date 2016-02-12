@@ -27,8 +27,8 @@ public class Hunter extends Vehicle {
         xCoordinate = 440;//positon
         yCoordinate = 600;//position
         
-        xWidth = 100;//size
-        yLength =200;
+        xWidth = 60;//size
+        yLength =80;
         
         xSpeed = 0;//movement
         ySpeed = 0;
@@ -120,7 +120,7 @@ public class Hunter extends Vehicle {
         }
         
         if(GameRunner.keysPressed[1]||GameRunner.keysPressed[3]) {
-            if(getXCoordinate()<=750) {
+            if(getXCoordinate()<=750-getXWidth()) {
                 setXSpeed(10);          
             }
         }

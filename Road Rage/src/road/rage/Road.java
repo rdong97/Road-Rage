@@ -42,7 +42,7 @@ public class Road {
         debrisList.add(new Debris(0,-900,0,3,randomType));
     }
     public void setSpawnSpeed() {
-        spawnTime = 1000;
+        spawnTime = 5000;
         spawnTime-=hunter.getScore();
     }
     public void startSpawnEnemy() {
@@ -57,16 +57,16 @@ public class Road {
                     }
                 }
                 if(closest.getDebrisType()==1) {
-                    enemyList.add(new Enemy(425, 1200, 0, -1, 50, 100, 100, 100));
+                    enemyList.add(new Enemy(425, 1200, 0, -1, 50, 70, 120, 100));
                 }
                 else if(closest.getDebrisType()==2) {
-                    enemyList.add(new Enemy(530, 1200, 0, -1, 50, 100, 100, 100));
+                    enemyList.add(new Enemy(530, 1200, 0, -1, 50, 70, 120, 100));
                 }
                 else if(closest.getDebrisType()==3) {
-                    enemyList.add(new Enemy(200, 1200, 0, -1, 50, 100, 100, 100));
+                    enemyList.add(new Enemy(200, 1200, 0, -1, 50, 70, 120, 100));
                 }
                 else if(closest.getDebrisType()==4) {
-                    enemyList.add(new Enemy(230, 1200, 0, -1, 50, 100, 100, 100));
+                    enemyList.add(new Enemy(230, 1200, 0, -1, 50, 70, 120, 100));
                 }
                 setSpawnSpeed();
             }
