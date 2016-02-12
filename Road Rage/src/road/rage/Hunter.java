@@ -16,56 +16,28 @@ import javax.swing.Timer;
 
 public class Hunter extends Vehicle {
     
-    private int health, maxHealth, xSpeed, ySpeed;
-    private int vehicleType, ammo, maxAmmo, score;
+    private int score,ammo,maxAmmo;
     
     private Timer timer;
     
     public Hunter()
     {
-        super();
-        xCoordinate = 440;//positon
-        yCoordinate = 600;//position
-        
-        xWidth = 60;//size
-        yLength =80;
-        
-        xSpeed = 0;//movement
-        ySpeed = 0;
-        
-        health = 100;//health
-        maxHealth = 100;
-        
-        vehicleType = 1;//graphics
-        
-        ammo = 100;//weaponry
-        maxAmmo = 100; 
-        
+        super(440,600,0,0,60,80,100,100);
+        ammo = 100;
+        maxAmmo = 100;
         score = 0;
         
     }
-    public Hunter(int x, int y, int xs, int ys, int w, int l, int h, int mh, int t, int a, int ma, int s)
+    public Hunter(int h, int a, int s)
     {
-        super(x,y,xs,ys,w,l,h,mh);
-                
-        vehicleType = t;//graphics
-        
-        ammo = a;//weaponry
-        maxAmmo = ma; 
+        super(440,600,0,0,60,80,h,h);
+        ammo = a;
+        maxAmmo = a;        
         
         score = s;
-        
     }
 
-    public int getHealth() {
-        return health;
-    }
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-    public int getVehicleType() {
-        return vehicleType;
-    }
+    
     public int getAmmo() {
         return ammo;
     }
@@ -75,15 +47,7 @@ public class Hunter extends Vehicle {
     public int getScore() {
         return score;
     }
-    public void setHealth(int h) {
-        health = h;
-    }
-    public void setMaxHealth(int h) {
-        maxHealth = h;
-    }
-    public void setVehicleType(int t) {
-        vehicleType = t;
-    }
+    
     public void setAmmo(int a) {
         ammo = a;
     }
@@ -98,9 +62,9 @@ public class Hunter extends Vehicle {
         ActionListener task = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-               health++;
-               if(health>maxHealth) {
-                   health = maxHealth;
+               setHealth(getHealth()+1);
+               if(getHealth()>getMaxHealth()) {
+                   setHealth(getMaxHealth());
                }
                ammo++;
                if(ammo>maxAmmo) {

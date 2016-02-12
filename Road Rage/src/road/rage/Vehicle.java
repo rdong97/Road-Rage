@@ -27,7 +27,19 @@ public abstract class Vehicle extends Entity{
         maxHealth = mh;
         
     }
+    public int getHealth() {
+        return health;
+    }
+    public int getMaxHealth() {
+        return maxHealth;
+    }
     
+    public void setHealth(int h) {
+        health = h;
+    }
+    public void setMaxHealth(int h) {
+        maxHealth = h;
+    }
     
     @Override
     public abstract void draw(Graphics window); 

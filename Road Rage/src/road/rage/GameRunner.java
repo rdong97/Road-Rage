@@ -41,15 +41,15 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     public static boolean[] keysPressed; //A, D, left, right
     public static Point hitPoint;
     public static boolean gunShot;
-    private String playerName;
-    private int score, ammo, maxAmmo, health, maxHealth;
+    private PlayerProfile currentProfile;
     
     public void launchRun(PlayerProfile p)
     {
         MainMenu.closeMenu();
         GameRunner.gameFrame = new JFrame();
         this.removeAll();//clears frame from menu or previous level
-        //calculates and sets a refresh rate.
+        //calculates and sets a refresh rate
+        currentProfile = p;
         startTime = System.currentTimeMillis();
         updateTime = startTime;
         
@@ -85,10 +85,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         timer.start();
         
         gameFrame.add(this); 
-
-        //system for determining start/end Y value based on difficulty, higher 
-        //values indicate harder levels as users have less space to create paths
-        road = new Road();//new grid   
+        road = new Road(currentProfile);//new grid   
     }
     
     @Override
@@ -101,8 +98,8 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     {    
         if(hud==null)
         {
-            hud = new HUD(playerName, score, ammo, maxAmmo, health, maxHealth);//new heads up display
-            hud.startTimer();//start level timer, which determines end score.
+            hud = new HUD(currentProfile.getName(), currentProfile.getScore(), currentProfile.getMaxHealth(),currentProfile.getMaxAmmo());//new heads up display
+            hud.startTimer();//start level timer.
         }
         if(back==null)//if canvas has not been created, create canvsas
         {
@@ -111,6 +108,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         Graphics2D twoDGraph = (Graphics2D)g;
         Graphics graphToBack= back.createGraphics(); //prepares drawing onto bufferedimage graphics
         road.draw(graphToBack);//draws gamegrid, includes blocks
+        hud.liveUpdateHUD(road.getLiveStats());
         hud.draw(graphToBack);//draws heads up display
         twoDGraph.drawImage(back,0,0,gameFrame.getWidth(),gameFrame.getHeight(),null);//draws bufferedimage to frame
         if(System.currentTimeMillis()-updateTime >= eventTime)//updates based on refresh rate

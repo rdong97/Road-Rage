@@ -24,8 +24,8 @@ public class Road {
     private Timer enemySpawnTimer;
     private int spawnTime;
     
-    public Road() {
-        hunter = new Hunter();  
+    public Road(PlayerProfile p) {
+        hunter = new Hunter(p.getScore(),p.getMaxHealth(),p.getMaxAmmo());  
         hunter.startIncrementalTimers();
         debrisList = new ArrayList<Debris>();
         debrisList.add(new Debris(0,-900,0,3,1));
@@ -206,7 +206,15 @@ public class Road {
             d.findNextLocation();
         }
     }
-    
+    public ArrayList<Integer>getLiveStats() {
+        ArrayList<Integer>stats = new ArrayList<Integer>();
+        stats.add(hunter.getScore());
+        stats.add(hunter.getHealth());
+        stats.add(hunter.getMaxHealth());
+        stats.add(hunter.getAmmo());
+        stats.add(hunter.getMaxAmmo());
+        return stats;
+    }
     public void draw(Graphics window) {
         for(Debris d: debrisList) {
             d.draw(window);

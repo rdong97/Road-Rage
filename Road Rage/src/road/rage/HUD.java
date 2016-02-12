@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.Timer;
 
 /**
@@ -24,20 +25,20 @@ public class HUD {
     private int score, ammo, maxAmmo, health, maxHealth;
     
     public HUD() {
-        profileName = "Player 1";
+        profileName = "Default Player";
         score = 0;
         ammo = 100;
         maxAmmo = 100;
         health = 100;
         maxHealth = 100;
     }
-    public HUD(String n, int s, int a, int ma, int h, int mh) {
+    public HUD(String n, int s, int a, int h) {
         profileName = n;
         score = s;
         ammo = a;
-        maxAmmo = ma;
+        maxAmmo = a;
         health = h;
-        maxHealth = mh;
+        maxHealth = h;
     }
     
     public void startTimer() {     
@@ -51,47 +52,37 @@ public class HUD {
         timer =new Timer(delay, task);
         timer.start();
     }
-    public void liveUpdateHUD(int s, int a, int h) {
-        score = s;
-        ammo = a;
-        health = h;
+    public void liveUpdateHUD(ArrayList<Integer>stats) {
+        score = stats.get(0);
+        health = stats.get(1);
+        maxHealth = stats.get(2);
+        ammo = stats.get(3);
+        maxAmmo = stats.get(4);
     }
-    public void draw(Graphics window)
-    {
-        Font myFont=new Font("Impact",Font.PLAIN, 50);
+    public void draw(Graphics window) {
+        Font myFont=new Font("Impact",Font.PLAIN, 20);
         window.setColor(Color.white);
         window.setFont(myFont);
         
-        //draw HUD skin
+        window.drawImage(ImageManager.getImage(0), 900, 0, 300, 900, null);
         
         String displayTime=timeElapsed+"";
-            if(timeElapsed<10)
-            {
+            if(timeElapsed<10) {
                 displayTime=displayTime.substring(0,3);
             }
-            else if(timeElapsed<100)
-            {
+            else if(timeElapsed<100) {
                 displayTime=displayTime.substring(0,4);
             }
-            else if(timeElapsed<1000)
-            {
+            else if(timeElapsed<1000) {
                 displayTime=displayTime.substring(0,5);
             }
-            else if(timeElapsed<10000)
-            {
+            else if(timeElapsed<10000) {
                 displayTime=displayTime.substring(0,6);
             }
         //change window coordinates later!!!!!
-        window.drawString("Time:", 0,0);
-        window.drawString("Score:", 0,0);
-        window.drawString("Health:", 0,0);
-        window.drawString("Ammo:", 0,0);
-        
-        
-        window.drawString(displayTime, 0,0);
-        window.drawString(score+"", 0,0);
-        window.drawString(health+"/"+maxHealth, 0,0);
-        window.drawString(ammo+"/"+maxAmmo, 0,0);
+        window.drawString("Time: "+displayTime, 950,200);
+        window.drawString("Score: "+score, 950,300);
+        window.drawString("Health: "+health+"/"+maxHealth, 950,400);
+        window.drawString("Ammo: "+ammo+"/"+maxAmmo, 950,500);
     }
-    
 }
