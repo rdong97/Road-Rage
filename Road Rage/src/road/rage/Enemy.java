@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class Enemy extends Vehicle{
 
     private ArrayList<Debris>debrisList;
-    private int randomizer;
+    private final int randomizer;
     
     public Enemy() {
         super();
-        debrisList = new ArrayList<Debris>();
+        debrisList = new ArrayList<>();
         randomizer = (int)(2*Math.random());//gives 0 or 1, to be used in random pathing assignment
     }
     public Enemy(int x, int y, int xs, int ys, int w, int l, int h, int mh) {

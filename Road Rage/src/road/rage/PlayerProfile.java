@@ -14,11 +14,12 @@ public class PlayerProfile {
     private final String playerName;
     private int score, maxAmmo, maxHealth;
     
-    public PlayerProfile(String n, int s, int a, int h){
+    public PlayerProfile(String n, int s, int h, int a){
         playerName = n;
         score = s;
-        maxAmmo = a;
         maxHealth = h;
+        maxAmmo = a;
+        
     }
     public void setScore(int s) {
         score = s;

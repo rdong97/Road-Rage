@@ -100,7 +100,7 @@ public class Store extends JPanel{
             public void actionPerformed(ActionEvent e) 
             {
                 if(playerProfile.getScore()>100) {
-                    playerProfile.setMaxHealth(playerProfile.getMaxHealth()+100);
+                    playerProfile.setMaxHealth(playerProfile.getMaxHealth()+10);
                     playerProfile.setScore(playerProfile.getScore()-100);
                 }
                 updateInfo();
@@ -124,7 +124,7 @@ public class Store extends JPanel{
             public void actionPerformed(ActionEvent e) 
             {
                 if(playerProfile.getScore()>100) {
-                    playerProfile.setMaxAmmo(playerProfile.getMaxAmmo()+100);
+                    playerProfile.setMaxAmmo(playerProfile.getMaxAmmo()+10);
                     playerProfile.setScore(playerProfile.getScore()-100);
                 }
                 updateInfo();

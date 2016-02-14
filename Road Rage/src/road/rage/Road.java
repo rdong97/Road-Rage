@@ -27,12 +27,12 @@ public class Road {
     public Road(PlayerProfile p) {
         hunter = new Hunter(p.getScore(),p.getMaxHealth(),p.getMaxAmmo());  
         hunter.startIncrementalTimers();
-        debrisList = new ArrayList<Debris>();
+        debrisList = new ArrayList<>();
         debrisList.add(new Debris(0,-900,0,3,1));
         debrisList.add(new Debris(0,-450,0,3,1));
         debrisList.add(new Debris(0,0,0,3,1));
         debrisList.add(new Debris(0,450,0,3,1));
-        enemyList = new ArrayList<Enemy>();
+        enemyList = new ArrayList<>();
         setSpawnSpeed();
         startSpawnEnemy();
     }
@@ -41,11 +41,11 @@ public class Road {
         int randomType = (int)(Math.random()*4+1);
         debrisList.add(new Debris(0,-900,0,3,randomType));
     }
-    public void setSpawnSpeed() {
-        spawnTime = 3000;
-        spawnTime-=hunter.getScore();
+    private void setSpawnSpeed() {
+        spawnTime = 5000;
+        spawnTime=spawnTime-hunter.getScore()-hunter.getMaxHealth()*10-hunter.getMaxAmmo()*10;
     }
-    public void startSpawnEnemy() {
+    private void startSpawnEnemy() {
         
         ActionListener timerListener = new ActionListener() {
             @Override
@@ -81,6 +81,9 @@ public class Road {
                 return true;
             }
         }
+        if(hunter.getHealth()<0) {
+            return true;
+        }
         return false;
     }
     
@@ -107,6 +110,7 @@ public class Road {
         if(toRemove!=null)
         {
             enemyList.remove(toRemove);
+            hunter.setScore(hunter.getScore()+10);
         }
     }
     
@@ -116,17 +120,20 @@ public class Road {
         hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate(), hunter.getYCoordinate()+hunter.getYLength()/2));
+        hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()+hunter.getYLength()/2));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth(), hunter.getYCoordinate()+hunter.getYLength()));
         hunterDamagePoints.add(new Point(hunter.getXCoordinate()+hunter.getXWidth()/2, hunter.getYCoordinate()));
         /*
         Hunter Damage Point Locations (denoted by '*')
         
-        *--*--*
-        |     |
-        |     |
-        |     |
-        |     |
-        *-----*
+        *---*---*
+        |       |
+        |       |
+        *       *
+        |       |
+        |       |
+        *-------*
         
         note the extra damage caused by a head on collision
         
@@ -175,7 +182,8 @@ public class Road {
             removeEnemy(toRemove2);
         }
         Enemy receivedHit = null;
-        if(GameRunner.gunShot==true) {
+        if(GameRunner.gunShot==true&&hunter.getAmmo()>0) {
+            hunter.setAmmo(hunter.getAmmo()-1);
             for(Enemy e:enemyList) {
                 if(GameRunner.hitPoint.x<e.getXCoordinate()+e.getXWidth()&&GameRunner.hitPoint.x>e.getXCoordinate()) {
                    if(GameRunner.hitPoint.y<e.getXCoordinate()+e.getYLength()&&GameRunner.hitPoint.y>e.getYCoordinate()) {
@@ -187,6 +195,7 @@ public class Road {
         if(receivedHit!=null) {
             removeEnemy(receivedHit);
         }
+        
         GameRunner.gunShot = false; 
     }
     public void updateEntityLocations() {

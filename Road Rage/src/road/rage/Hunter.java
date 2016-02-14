@@ -58,7 +58,7 @@ public class Hunter extends Vehicle {
         score = s;
     }
     public void startIncrementalTimers() {     
-        int delay = 100;
+        int delay = 1000;
         ActionListener task = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {

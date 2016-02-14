@@ -32,7 +32,7 @@ public class HUD {
         health = 100;
         maxHealth = 100;
     }
-    public HUD(String n, int s, int a, int h) {
+    public HUD(String n, int s, int h, int a) {
         profileName = n;
         score = s;
         ammo = a;
