@@ -42,7 +42,7 @@ public class Road {
         debrisList.add(new Debris(0,-900,0,3,randomType));
     }
     public void setSpawnSpeed() {
-        spawnTime = 5000;
+        spawnTime = 3000;
         spawnTime-=hunter.getScore();
     }
     public void startSpawnEnemy() {
@@ -190,21 +190,19 @@ public class Road {
         GameRunner.gunShot = false; 
     }
     public void updateEntityLocations() {
-        if(hasGameEnded()) {
-         //game end   
-        }
-        
-        removeDebris();
-        checkCollisions();
-        hunter.findXSpeed();
-        hunter.findNextLocation();
-        for(Enemy e:enemyList) {
-            e.setXSpeed(e.findXSpeed(debrisList));
-            e.findNextLocation();
-        }
-        for(Debris d:debrisList) {
-            d.findNextLocation();
-        }
+        if(!hasGameEnded()) {
+           removeDebris();
+            checkCollisions();
+            hunter.findXSpeed();
+            hunter.findNextLocation();
+            for(Enemy e:enemyList) {
+                e.setXSpeed(e.findXSpeed(debrisList));
+                e.findNextLocation();
+            }
+            for(Debris d:debrisList) {
+                d.findNextLocation();
+            } 
+        }     
     }
     public ArrayList<Integer>getLiveStats() {
         ArrayList<Integer>stats = new ArrayList<Integer>();
@@ -216,12 +214,15 @@ public class Road {
         return stats;
     }
     public void draw(Graphics window) {
-        for(Debris d: debrisList) {
+        
+        if(!hasGameEnded()){
+            for(Debris d: debrisList) {
             d.draw(window);
+            }
+            for(Enemy e: enemyList) {
+                e.draw(window);
+            }
+            hunter.draw(window);  
         }
-        for(Enemy e: enemyList) {
-            e.draw(window);
-        }
-        hunter.draw(window);  
     }
 }

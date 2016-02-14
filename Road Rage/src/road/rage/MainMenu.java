@@ -138,34 +138,34 @@ public class MainMenu extends JPanel {
                 }
             });
 
-           //create credits button.         
-           credits = new JButton("Credits");
-           credits.setBorder(BorderFactory.createEmptyBorder());
-           credits.setContentAreaFilled(true);
-           credits.setHorizontalTextPosition(JButton.CENTER);
-           credits.setVerticalTextPosition(JButton.CENTER);
-           credits.setFont(font);
-           credits.setForeground(buttonColor);
-           credits.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                      //          SoundFX.playFX("Select");
-                                 JOptionPane.showMessageDialog(null, "                                                Credits\n"
-                                         + "                  Developed By BlackBird Mafia Studios\n"
-                                         + "Project Manager:                Richard Dong\n"
-                                         + "Lead Developer:                 Richard Dong\n"
-                                         + "Graphics Manager:     George Zhang and Kenneth Wang\n"
-                                         + "Documentation Manager:  Abhijeet Venkataraman:\n\n"
-                                         + "               Contracted By Congative Though Media\n\n"
-                                         + "                                       Developed Using\n"
-                                         + "Netbeans:                             Development Enviroment\n"
-                                         + "Photoshop:                           Graphics Production\n"
-                                         + "Paint Dot Net:                       Graphics Producation\n"
-                                         + "BFXR Studios:                      Sound Production\n"
-                                         + "BitBucket:                             Group Code Collaberation\n"
-                                         + "Google Drive:                       Group Documentation Collaberation\n","Credits",JOptionPane.PLAIN_MESSAGE);
-                            }
-                    });
+            //create credits button.         
+            credits = new JButton("Credits");
+            credits.setBorder(BorderFactory.createEmptyBorder());
+            credits.setContentAreaFilled(true);
+            credits.setHorizontalTextPosition(JButton.CENTER);
+            credits.setVerticalTextPosition(JButton.CENTER);
+            credits.setFont(font);
+            credits.setForeground(buttonColor);
+            credits.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+      //          SoundFX.playFX("Select");
+                 JOptionPane.showMessageDialog(null, "                                                Credits\n"
+                         + "                  Developed By BlackBird Mafia Studios\n"
+                         + "Project Manager:                Richard Dong\n"
+                         + "Lead Developer:                 Richard Dong\n"
+                         + "Graphics Manager:     George Zhang and Kenneth Wang\n"
+                         + "Documentation Manager:  Abhijeet Venkataraman:\n\n"
+                         + "               Contracted By Congative Though Media\n\n"
+                         + "                                       Developed Using\n"
+                         + "Netbeans:                             Development Enviroment\n"
+                         + "Photoshop:                           Graphics Production\n"
+                         + "Paint Dot Net:                       Graphics Producation\n"
+                         + "BFXR Studios:                      Sound Production\n"
+                         + "BitBucket:                             Group Code Collaberation\n"
+                         + "Google Drive:                       Group Documentation Collaberation\n","Credits",JOptionPane.PLAIN_MESSAGE);
+            }
+    });
 
             //create exit button.       
             exit = new JButton("Exit");

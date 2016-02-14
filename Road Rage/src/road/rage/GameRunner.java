@@ -65,6 +65,8 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         gameFrame.setVisible(true);
         gameFrame.addKeyListener(this);
         gameFrame.addMouseListener(this);
+        hud = new HUD(currentProfile.getName(), currentProfile.getScore(), currentProfile.getMaxHealth(),currentProfile.getMaxAmmo());//new heads up display
+        hud.startTimer();//start level timer.
         keysPressed = new boolean[4];
         hitPoint = new Point(0,0);
         gunShot = false;
@@ -96,26 +98,31 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     @Override
     public void paint(Graphics g)
     {    
-        if(hud==null)
-        {
-            hud = new HUD(currentProfile.getName(), currentProfile.getScore(), currentProfile.getMaxHealth(),currentProfile.getMaxAmmo());//new heads up display
-            hud.startTimer();//start level timer.
-        }
         if(back==null)//if canvas has not been created, create canvsas
         {
             back=(BufferedImage)createImage(1200,900);
         }
-        Graphics2D twoDGraph = (Graphics2D)g;
-        Graphics graphToBack= back.createGraphics(); //prepares drawing onto bufferedimage graphics
-        road.draw(graphToBack);//draws gamegrid, includes blocks
-        hud.liveUpdateHUD(road.getLiveStats());
-        hud.draw(graphToBack);//draws heads up display
-        twoDGraph.drawImage(back,0,0,gameFrame.getWidth(),gameFrame.getHeight(),null);//draws bufferedimage to frame
-        if(System.currentTimeMillis()-updateTime >= eventTime)//updates based on refresh rate
+        if(!road.hasGameEnded())
         {
-            road.updateEntityLocations();
+            Graphics2D twoDGraph = (Graphics2D)g;
+            Graphics graphToBack= back.createGraphics(); //prepares drawing onto bufferedimage graphics
+            road.draw(graphToBack);//draws gamegrid, includes blocks
+            hud.liveUpdateHUD(road.getLiveStats());
+            hud.draw(graphToBack);//draws heads up display
+            twoDGraph.drawImage(back,0,0,gameFrame.getWidth(),gameFrame.getHeight(),null);//draws bufferedimage to frame
+            if(System.currentTimeMillis()-updateTime >= eventTime)//updates based on refresh rate
+            {
+                road.updateEntityLocations();
+            }
+            repaint();//redo again in loop
         }
-        repaint();//redo again in loop
+        else {
+            Music.stop();
+            timer.stop();
+            PlayerProfile toSave = new PlayerProfile(currentProfile.getName(),road.getLiveStats().get(0),currentProfile.getMaxHealth(),currentProfile.getMaxAmmo());
+            EndGame endFrame = new EndGame(toSave);
+            gameFrame.dispose();
+        } 
     }  
     @Override
     public void keyTyped(KeyEvent e) {}
