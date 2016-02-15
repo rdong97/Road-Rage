@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Color;
@@ -19,18 +14,16 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Gaming
+ * @author 02-1024-0008
  */
-public class EndGame extends JPanel{
+public class EndGame extends JPanel {
     
     private PlayerProfile playerProfile;
     private JFrame endScreen;
     private Font font;
 
-    
     public EndGame(PlayerProfile p) {
-        try
-        {
+        try {
             endScreen = new JFrame();
             playerProfile = p;
             font = new Font("Arial", Font.PLAIN, 12);//set font
@@ -48,89 +41,91 @@ public class EndGame extends JPanel{
         }
         catch(Exception ex)
         {
-            ErrorLogger.logRuntimeError("Could not select a player from frame",ex);
+            ErrorLogger.logRuntimeError("Could not launch end game frame.",ex);
         }
     }
     private void createButtons() {
-        JButton restartGame = new JButton();
-        //draws out the upgrade health onto button
-        restartGame.setBorderPainted(false);
-        restartGame.setContentAreaFilled(true);
-        restartGame.setHorizontalTextPosition(SwingConstants.CENTER);
-        restartGame.setText("Restart Game");
-        restartGame.setFont(font);
-        restartGame.setForeground(Color.black);
-        restartGame.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
+        try {
+            //restart game button
+            JButton restartGame = new JButton();
+            restartGame.setBorderPainted(false);
+            restartGame.setContentAreaFilled(true);
+            restartGame.setHorizontalTextPosition(SwingConstants.CENTER);
+            restartGame.setText("Restart Game");
+            restartGame.setFont(font);
+            restartGame.setForeground(Color.black);
+            restartGame.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    GameRunner newGame = new GameRunner();
+                    newGame.launchRun(playerProfile);
+                    Music.play("GameMusic");
+                    endScreen.dispose();
+                }
+            });
+            restartGame.setBounds(100, 10, 200, 20);//set location top center
+            this.add(restartGame);//add to frame.
+
+            //launch menu button
+            JButton menu = new JButton();
+            //draws out the upgrade health onto button
+            menu.setBorderPainted(false);
+            menu.setContentAreaFilled(true);
+            menu.setHorizontalTextPosition(SwingConstants.CENTER);
+            menu.setText("Main Menu");
+            menu.setFont(font);
+            menu.setForeground(Color.black);
+            menu.addActionListener(new ActionListener() 
             {
-                endScreen.dispose();
-                GameRunner newGame = new GameRunner();
-                newGame.launchRun(playerProfile);
-            }
-        });
-        restartGame.setBounds(10, 10, 200, 20);//set location
-        this.add(restartGame);//add to frame.
-        
-        
-        JButton menu = new JButton();
-        //draws out the upgrade health onto button
-        menu.setBorderPainted(false);
-        menu.setContentAreaFilled(true);
-        menu.setHorizontalTextPosition(SwingConstants.CENTER);
-        menu.setText("Exit Game");
-        menu.setFont(font);
-        menu.setForeground(Color.black);
-        menu.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                MainMenu newMenu = new MainMenu();
-                newMenu.startMenu();
-                endScreen.dispose();
-            }
-        });
-        menu.setBounds(10, 40, 200, 20);//set location
-        this.add(menu);//add to frame.
-        
-        JButton exit = new JButton();
-        //draws out the upgrade health onto button
-        exit.setBorderPainted(false);
-        exit.setContentAreaFilled(true);
-        exit.setHorizontalTextPosition(SwingConstants.CENTER);
-        exit.setText("Exit Game");
-        exit.setFont(font);
-        exit.setForeground(Color.black);
-        exit.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                System.exit(1);
-            }
-        });
-        exit.setBounds(10, 70, 200, 20);//set location
-        this.add(exit);//add to frame.
-        
-        
-        
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MainMenu newMenu = new MainMenu();
+                    newMenu.startMenu(); //launch menu
+                    endScreen.dispose(); //dispose of end game frame
+                }
+            });
+            menu.setBounds(100, 40, 200, 20);//set location mid center
+            this.add(menu);//add to frame.
+
+            //exit game button
+            JButton exit = new JButton();
+            exit.setBorderPainted(false);
+            exit.setContentAreaFilled(true);
+            exit.setHorizontalTextPosition(SwingConstants.CENTER);
+            exit.setText("Exit Game");
+            exit.setFont(font);
+            exit.setForeground(Color.black);
+            exit.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);//game exits
+                }
+            });
+            exit.setBounds(100, 70, 200, 20);//set location bottom center
+            this.add(exit);//add to frame.
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not add end game frame buttons.", ex);
+        }
     }
     @Override
     public void paintComponent(Graphics g)
     {
-        
         try {
             g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
-            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+            ErrorLogger.logRuntimeError("Could not draw end game frame graphic.", ex);
         }
         repaint();//refresh screen
     }
     
     private void saveProfile() {
-        SaveLoad.updateSaveProfile(playerProfile);
+        try {
+            SaveLoad.updateSaveProfile(playerProfile);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not execute save profile command.", ex);
+        }
     }
 }

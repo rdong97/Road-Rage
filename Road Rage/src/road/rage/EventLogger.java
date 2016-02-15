@@ -9,10 +9,10 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * Logs system event to a dedicated log file.
- * @author Richard Dong
+ * @author 02-1024-0008
  */
-public class EventLogger 
-{
+public class EventLogger {
+   
     private static final Logger logEvent = Logger.getLogger("EventLogger"); 
     private static final SimpleFormatter sf = new SimpleFormatter();
     private static Handler fhEvent; 
@@ -21,21 +21,14 @@ public class EventLogger
      * Sets up event log with correct formatting and tools to append 
      * existing messages.
      */
-    public static void setupEvent()
-    { 
-        try 
-        {
+    public static void setupEvent() { 
+        try {
             fhEvent = new FileHandler("logs/SystemEvent.txt",999999,1,true);
             fhEvent.setFormatter(sf);
             logEvent.addHandler(fhEvent);
         } 
-        catch (IOException | SecurityException e)
-        {
+        catch (IOException | SecurityException e) {
             ErrorLogger.logIOError("Could not initialize system event log",e);
-        }
-        catch(Exception ex)
-        {
-            ErrorLogger.logRuntimeError("Unknown error with initializing system event log",ex);
         }
     }
 
@@ -43,18 +36,15 @@ public class EventLogger
      * Logs a message into the error logging file.
      * @param message the message to log.
      */
-    public static void logEvent(String message)
-    {
-        try 
-        {
-            if(fhEvent == null)//setup the log file if nonexistant
-            {
+    public static void logEvent(String message) {
+        try {
+            //setup the log file if nonexistant
+            if(fhEvent == null) {
                 setupEvent();
             } 
             logEvent.log(Level.INFO,message + "\n\n");//log message
         }
-        catch(Exception ex)
-        {
+        catch(Exception ex) {
             ErrorLogger.logRuntimeError("Unknown error with logging event",ex);
         }
     }

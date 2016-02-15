@@ -1,34 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 import java.awt.Graphics;
 
-public abstract class Entity implements Location{
-    public int xCoordinate, yCoordinate, xWidth, yLength,xSpeed, ySpeed;
+public abstract class Entity implements Location {
+    public int xCoordinate, yCoordinate, xWidth, yLength, xSpeed, ySpeed;
     
     public Entity() {
-        xCoordinate = 0;
-        yCoordinate = 0;
-        xSpeed = 0;
-        ySpeed = 0;
-        xWidth = 0;
-        yLength = 0;
+        //default entity
+        try {
+            xCoordinate = 0;
+            yCoordinate = 0;
+            xSpeed = 0;
+            ySpeed = 0;
+            xWidth = 0;
+            yLength = 0;
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize parent entity", ex);
+        }
     }
     public Entity(int x, int y, int xs, int ys, int w, int l) {
-        xCoordinate = x;
-        yCoordinate = y;
-        xSpeed = xs;
-        ySpeed = ys;
-        xWidth = w;
-        yLength = l;
+        try {
+            xCoordinate = x;
+            yCoordinate = y;
+            xSpeed = xs;
+            ySpeed = ys;
+            xWidth = w;
+            yLength = l;
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize parent entity", ex);
+        }
     }
     
     @Override
@@ -67,8 +73,13 @@ public abstract class Entity implements Location{
     }
     @Override
     public void findNextLocation(){ 
-        setXCoordinate(getXCoordinate()+getXSpeed());
-        setYCoordinate(getYCoordinate()+getYSpeed());
+        try {
+            setXCoordinate(getXCoordinate()+getXSpeed());
+            setYCoordinate(getYCoordinate()+getYSpeed());
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not calculate parent entity next location.", ex);
+        }
     }
     @Override
     public abstract void draw(Graphics window);

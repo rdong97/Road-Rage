@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Graphics;
@@ -11,78 +6,99 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
-public class Enemy extends Vehicle{
+public class Enemy extends Vehicle {
 
     private ArrayList<Debris>debrisList;
-    private final int randomizer;
+    private int randomizer;
     
     public Enemy() {
         super();
-        debrisList = new ArrayList<>();
-        randomizer = (int)(2*Math.random());//gives 0 or 1, to be used in random pathing assignment
+        try {
+            debrisList = new ArrayList<>();
+            randomizer = (int)(2*Math.random());//gives 0 or 1, to be used in random pathing assignment
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize enemy object.", ex);
+        }
     }
     public Enemy(int x, int y, int xs, int ys, int w, int l, int h, int mh) {
         super(x,y,xs,ys,w,l,h,mh);
-        debrisList = new ArrayList<Debris>();
-        randomizer = (int)(2*Math.random());//gives 0 or 1, to be used in random pathing assignment
+        try {
+            debrisList = new ArrayList<>();
+            randomizer = (int)(2*Math.random());//gives 0 or 1, to be used in random pathing assignment
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize enemy object.", ex);
+        }
     }
     public int findXSpeed(ArrayList<Debris>list)//AI for calculating anticollision
     {
-        debrisList = list;
-        Debris closest = list.get(list.size()-1);
-        for(Debris d:debrisList) {
-            if(d.isDebris()) {
-                if(d.getYCollisionCoordinate()<this.getYCoordinate()) {
-                    if(d.getYCoordinate()>closest.getYCoordinate()) {
-                    closest = d;
+        try {
+            debrisList = list;
+            Debris closest = list.get(list.size()-1);
+            for(Debris d:debrisList) {
+                if(d.isDebris()) {
+                    if(d.getYCollisionCoordinate()<this.getYCoordinate()) {
+                        if(d.getYCoordinate()>closest.getYCoordinate()) {
+                        closest = d;
+                        }
+                    }
+                }          
+            }
+            if(!closest.isDebris()) {
+                return 0;
+            }
+            else {
+                Point trackPoint = new Point(0,450);//default center of road
+
+                if(closest.getDebrisType()==2) {//left debris field
+                    if(randomizer==0) {
+                        trackPoint.move(650,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                    }
+                    else if(randomizer==1) {
+                        trackPoint.move(450,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
                     }
                 }
-            }          
-        }
-        if(!closest.isDebris()) {
-            return 0;
-        }
-        else {
-            Point trackPoint = new Point(0,0);
-            
-            if(closest.getDebrisType()==2) {//left debris field
-                if(randomizer==0) {
-                    trackPoint.move(650,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                else if(closest.getDebrisType()==3) {//middle debris field
+                    if(randomizer==0) {
+                        trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                    }
+                    else if(randomizer==1) {
+                        trackPoint.move(650,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                    }
                 }
-                else if(randomizer==1) {
-                    trackPoint.move(450,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                else if(closest.getDebrisType()==4) {//right debris field
+                    if(randomizer==0) {
+                        trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                    }
+                    else if(randomizer==1) {
+                        trackPoint.move(450,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
+                    }
                 }
+                double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
+                double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
+                double timeToMove = yDistanceNeeded/(getYSpeed()+6);
+                int speedNeeded =(int)(xDistanceNeeded/timeToMove);
+                //slope: conversion from distance to speed
+                return speedNeeded;
             }
-            else if(closest.getDebrisType()==3) {//middle debris field
-                if(randomizer==0) {
-                    trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-                }
-                else if(randomizer==1) {
-                    trackPoint.move(650,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-                }
-            }
-            else if(closest.getDebrisType()==4) {//right debris field
-                if(randomizer==0) {
-                    trackPoint.move(250,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-                }
-                else if(randomizer==1) {
-                    trackPoint.move(450,closest.getYCollisionCoordinate()+closest.getYDebrisLength());
-                }
-            }
-            double xDistanceNeeded = trackPoint.getX()-(getXCoordinate()+(getXWidth()/2));
-            double yDistanceNeeded = getYCoordinate() - trackPoint.getY();
-            double timeToMove = yDistanceNeeded/(getYSpeed()+6);
-            int speedNeeded =(int)(xDistanceNeeded/timeToMove);
-            //slope: conversion from distance to speed
-            return speedNeeded;
         }  
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not calculate enemy pathing speed", ex);
+            return 0;//error in calculating speed.
+        }
     }
     
     @Override
     public void draw(Graphics window) {
-        int imageNum = 1;//will change based on skin
-        window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), getXWidth(), getYLength(), null);
+        try {
+            int imageNum = 1;//will change based on skin
+            window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), getXWidth(), getYLength(), null);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not draw enemy object.", ex);
+        }
     }
 }

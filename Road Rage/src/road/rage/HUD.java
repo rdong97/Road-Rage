@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Graphics;
@@ -15,11 +10,11 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 public class HUD {
     
-    private String profileName;
+    private final String profileName;
     private Timer timer;
     private double timeElapsed;
     private int score, ammo, maxAmmo, health, maxHealth;
@@ -40,7 +35,6 @@ public class HUD {
         health = h;
         maxHealth = h;
     }
-    
     public void startTimer() {     
         int delay = 100;
         ActionListener task = new ActionListener() {
@@ -60,13 +54,16 @@ public class HUD {
         maxAmmo = stats.get(4);
     }
     public void draw(Graphics window) {
-        Font myFont=new Font("Impact",Font.PLAIN, 20);
-        window.setColor(Color.white);
-        window.setFont(myFont);
-        
-        window.drawImage(ImageManager.getImage(0), 900, 0, 300, 900, null);
-        
-        String displayTime=timeElapsed+"";
+        try {
+            Font myFont=new Font("Impact",Font.PLAIN, 20);
+            window.setColor(Color.white);
+            window.setFont(myFont);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not set HUD font.", ex);
+        }
+        try {
+            String displayTime=timeElapsed+"";
             if(timeElapsed<10) {
                 displayTime=displayTime.substring(0,3);
             }
@@ -79,10 +76,20 @@ public class HUD {
             else if(timeElapsed<10000) {
                 displayTime=displayTime.substring(0,6);
             }
-        //change window coordinates later!!!!!
-        window.drawString("Time: "+displayTime, 950,200);
-        window.drawString("Score: "+score, 950,300);
-        window.drawString("Health: "+health+"/"+maxHealth, 950,400);
-        window.drawString("Ammo: "+ammo+"/"+maxAmmo, 950,500);
+            window.drawString("Time: "+displayTime, 950,300);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not format and display time.", ex);
+        }
+        try {
+            window.drawImage(ImageManager.getImage(0), 900, 0, 300, 900, null);
+            window.drawString("Name: "+profileName, 950,200);
+            window.drawString("Score: "+score, 950,400);
+            window.drawString("Health: "+health+"/"+maxHealth, 950,500);
+            window.drawString("Ammo: "+ammo+"/"+maxAmmo, 950,600);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not draw non-time items onto HUD.", ex);
+        }
     }
 }
