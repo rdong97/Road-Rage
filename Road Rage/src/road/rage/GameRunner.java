@@ -38,7 +38,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     
     public void launchRun(PlayerProfile p) {
         try {
-            MainMenu.closeMenu();
+            MainMenu.menuFrame.dispose();
         }
         catch(RuntimeException ex) {
             ErrorLogger.logRuntimeError("Could not close main menu.", ex);
@@ -58,7 +58,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
             gameFrame.setTitle("Road Rage");
             gameFrame.setResizable(false);
             gameFrame.setLocation(0, 0);//top left corner
-            gameFrame.setDefaultCloseOperation(gameFrame.EXIT_ON_CLOSE);
+            gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             gameFrame.setVisible(true);
             gameFrame.addKeyListener(this);
             gameFrame.addMouseListener(this);
@@ -71,6 +71,9 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
             hud = new HUD(p.getName(), p.getScore(), p.getMaxHealth(),p.getMaxAmmo());//new heads up display
             hud.startTimer();//start level timer.
             road = new Road(currentProfile);//new grid 
+            road.setEnemySpawnSpeed();//set spawning speed of enemy
+            road.startSpawnEnemy();//start spawning enemies
+            road.spawnInitialDebris();//spawn in debris that appears before scrolling.
             keysPressed = new boolean[4];
             hitPoint = new Point(0,0);
             gunShot = false;
@@ -131,6 +134,8 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
                 //create new user information, especially score
                 PlayerProfile toSave = new PlayerProfile(currentProfile.getName(),road.getLiveStats().get(0),currentProfile.getMaxHealth(),currentProfile.getMaxAmmo());
                 EndGame endFrame = new EndGame(toSave);
+                endFrame.saveProfile();//save profile
+                endFrame.createButtons();//add buttons to the frame
                 gameFrame.dispose();//remove game frame, only frame available is end game frame.
             } 
         }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Color;
@@ -13,7 +8,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,7 +15,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 public class SelectPlayer extends JPanel {
 
@@ -32,10 +26,8 @@ public class SelectPlayer extends JPanel {
     /**
      * Creates frame for selecting player slot.
      */
-    public SelectPlayer()
-    {
-        try
-        {
+    public SelectPlayer() {
+        try{
             selectScreen = new JFrame();
             font = new Font("Arial", Font.PLAIN, 12);//set font
             selectScreen.setSize(400, 200);
@@ -47,6 +39,11 @@ public class SelectPlayer extends JPanel {
             selectScreen.repaint();//paints on info
             selectScreen.setVisible(true);
             this.setLayout(null);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialze select player screen.", ex);
+        }
+        try {
             
             playerList = SaveLoad.getProfiles();//retrieves profiles from file
             if(playerList == null) {
@@ -69,53 +66,49 @@ public class SelectPlayer extends JPanel {
                 createButton(playerList.get(i),i);
             }
         }
-        catch(Exception ex)
-        {
-            ErrorLogger.logRuntimeError("Could not select a player from frame",ex);
+        catch(Exception ex) {
+            ErrorLogger.logRuntimeError("Could not load profiles onto menu",ex);
         }
     }
     
     /**
      * Creates and adds a button for selecting player slot.
      */
-    private void createButton(PlayerProfile p, int slot)
-    {
-        try
-        {
+    private void createButton(PlayerProfile p, int slot) {
+        try {
             JButton button = new JButton();
-            //draws out the player name onto buttone
+            //draws out the player name onto button
             button.setBorderPainted(false);
             button.setContentAreaFilled(true);
             button.setHorizontalTextPosition(SwingConstants.CENTER);
-            button.setText("<html>" + p.getName() + "</html>");
+            button.setText("<html>" + p.getName() + "</html>");//add button based on profile
             button.setFont(font);
             button.setForeground(Color.black);
-            button.addActionListener(new ActionListener() 
-            {
+            button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
                     selectScreen.dispose();
                     Store storeScreen = new Store(p);
+                    storeScreen.updateInfo();
+                    storeScreen.createButtons();
                 }
             });
             button.setBounds(100*slot, 120, 100, 20);//set location
             this.add(button);//add to frame.
         }
-        catch(Exception ex)
-        {
+        catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not create select player buttons", ex);
         }
     } 
     @Override
     public void paintComponent(Graphics g)
     {
-
         try {
             g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
-            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+            ErrorLogger.logRuntimeError("Could not draw select player menu graphic", ex);
         }
         repaint();//refresh screen
     }

@@ -1,25 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 public class PlayerProfile {
     
-    private final String playerName;
+    private String playerName;
     private int score, maxAmmo, maxHealth;
     
-    public PlayerProfile(String n, int s, int h, int a){
-        playerName = n;
-        score = s;
-        maxHealth = h;
-        maxAmmo = a;
-        
+    public PlayerProfile(String n, int s, int h, int a) {
+        try {
+            playerName = n;
+            score = s;
+            maxHealth = h;
+            maxAmmo = a;
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize player profile.", ex);
+        }
     }
     public void setScore(int s) {
         score = s;
@@ -30,7 +29,6 @@ public class PlayerProfile {
     public void setMaxHealth(int h) {
         maxHealth = h;
     }
-    
     public String getName() {
         return playerName;
     }

@@ -36,15 +36,13 @@ public class EndGame extends JPanel {
             endScreen.repaint();//paints on info
             endScreen.setVisible(true);
             this.setLayout(null);
-            createButtons();
-            saveProfile();
         }
         catch(Exception ex)
         {
             ErrorLogger.logRuntimeError("Could not launch end game frame.",ex);
         }
     }
-    private void createButtons() {
+    public void createButtons() {
         try {
             //restart game button
             JButton restartGame = new JButton();
@@ -120,7 +118,7 @@ public class EndGame extends JPanel {
         repaint();//refresh screen
     }
     
-    private void saveProfile() {
+    public void saveProfile() {
         try {
             SaveLoad.updateSaveProfile(playerProfile);
         }

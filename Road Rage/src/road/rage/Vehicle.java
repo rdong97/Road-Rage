@@ -1,31 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Graphics;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 public abstract class Vehicle extends Entity{
 
     private int health, maxHealth;
     public Vehicle() {
         super();
-        health = 0;
-        maxHealth = 0;        
+        try {
+            health = 0;
+            maxHealth = 0;
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize vehicle.", ex);
+        }           
     }
     public Vehicle(int x, int y, int xs, int ys, int w, int l, int h, int mh) {
     
         super(x,y,xs,ys,w,l);
-        
-        health = h;//health
-        maxHealth = mh;
-        
+        try {
+            health = h;
+            maxHealth = mh;
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize vehicle.", ex);
+        } 
     }
     public int getHealth() {
         return health;

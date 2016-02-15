@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Color;
@@ -21,7 +16,7 @@ import javax.swing.SwingConstants;
 
 /**
  *
- * @author Richard Dong
+ * @author 02-1024-0008
  */
 public class TutorialSlideShow extends JPanel {
     
@@ -32,71 +27,81 @@ public class TutorialSlideShow extends JPanel {
     private Font font;
     
     public TutorialSlideShow() {
-        tutorialScreen = new JFrame();
-        tutorialScreen.setSize(800,800);
-        font = new Font("Arial", Font.PLAIN, 12);//set font
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
-        tutorialScreen.setLocation((int)(screenSize.getWidth()/2)-400,(int)(screenSize.getHeight()/2)-400);//set location to center
-        tutorialScreen.setTitle("Tutorial");//title
-        tutorialScreen.setResizable(false);
-        tutorialScreen.getContentPane().add(this);
-        tutorialScreen.repaint();//paints on info
-        tutorialScreen.setVisible(true);
-        this.setLayout(null);
-        imageList = new ArrayList<Image>();
-        for(int i=2;i<4;i++) {
-            imageList.add(ImageManager.getImage(i));
+        try {
+            tutorialScreen = new JFrame();
+            tutorialScreen.setSize(800,800);
+            font = new Font("Arial", Font.PLAIN, 12);//set font
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
+            tutorialScreen.setLocation((int)(screenSize.getWidth()/2)-400,(int)(screenSize.getHeight()/2)-400);//set location to center
+            tutorialScreen.setTitle("Tutorial");//title
+            tutorialScreen.setResizable(false);
+            tutorialScreen.getContentPane().add(this);
+            tutorialScreen.repaint();//paints on info
+            tutorialScreen.setVisible(true);
+            this.setLayout(null);
+            imageList = new ArrayList<>();
         }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not initialize tutorial slideshow.", ex);
+        }
+        try {
+           for(int i=2;i<4;i++) {
+                imageList.add(ImageManager.getImage(i));
+            } 
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not import tutorial slides.", ex);
+        }        
         currentSlideNumber = 0;
-        addButtons();
     }
     
-    private void addButtons() {
-        
-        JButton back = new JButton();
-        //draws out the upgrade health onto button
-        back.setBorderPainted(false);
-        back.setContentAreaFilled(true);
-        back.setHorizontalTextPosition(SwingConstants.CENTER);
-        back.setText("Back");
-        back.setFont(font);
-        back.setForeground(Color.black);
-        back.addActionListener(new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                currentSlideNumber--;
-                if(currentSlideNumber<0) {
-                    tutorialScreen.dispose();
+    public void addButtons() {
+        try {
+            JButton back = new JButton();
+            //draws out the upgrade health onto button
+            back.setBorderPainted(false);
+            back.setContentAreaFilled(true);
+            back.setHorizontalTextPosition(SwingConstants.CENTER);
+            back.setText("Back");
+            back.setFont(font);
+            back.setForeground(Color.black);
+            back.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    currentSlideNumber--;
+                    if(currentSlideNumber<0) {
+                        tutorialScreen.dispose();
+                    }
+                    addButtons();
+                    repaint();
                 }
-                addButtons();
-                repaint();
+            });
+            back.setBounds(0,0,100,50);//set location
+            this.add(back);//add to frame.
+
+            JButton next = new JButton();
+            //draws out the upgrade health onto button
+            next.setBorderPainted(false);
+            next.setContentAreaFilled(true);
+            next.setHorizontalTextPosition(SwingConstants.CENTER);
+            next.setText("Next");
+            next.setFont(font);
+            next.setForeground(Color.black);
+            next.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    currentSlideNumber++;
+                    addButtons();
+                    repaint();
+                }
+            });
+            next.setBounds(700,0,100,50);//set location
+            if(currentSlideNumber<numberSlides) {
+                this.add(next);//add to frame.
             }
-        });
-        back.setBounds(0,0,100,50);//set location
-        this.add(back);//add to frame.
-        
-        JButton next = new JButton();
-        //draws out the upgrade health onto button
-        next.setBorderPainted(false);
-        next.setContentAreaFilled(true);
-        next.setHorizontalTextPosition(SwingConstants.CENTER);
-        next.setText("Next");
-        next.setFont(font);
-        next.setForeground(Color.black);
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                currentSlideNumber++;
-                addButtons();
-                repaint();
-            }
-        });
-        next.setBounds(700,0,100,50);//set location
-        if(currentSlideNumber<numberSlides) {
-            this.add(next);//add to frame.
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not create tutorial slideshow buttons.", ex);
         }
     }
     
@@ -107,9 +112,8 @@ public class TutorialSlideShow extends JPanel {
             g.drawImage(imageList.get(currentSlideNumber),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
-            ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
+            ErrorLogger.logRuntimeError("Could not draw tutorial graphic", ex);
         }
         repaint();//refresh screen
     }
-    
 }

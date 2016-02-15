@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
 
 import java.awt.Color;
@@ -23,52 +18,64 @@ import javax.swing.plaf.FontUIResource;
 
 /**
  *
- * @author Richard
+ * @author 02-1024-0008
  */
 public class MainMenu extends JPanel {
     
-    private static JFrame menuFrame;
+    public static JFrame menuFrame;
     private JButton play, tutorial, credits, highScore, next, back, exit;  
-    private Color blackStartFilter = new Color(0.0f,0.0f,0.0f,1.0f);
     
     public void startMenu() {
-    
-        EventLogger.setupEvent();//set up logs
-        ErrorLogger.setupError();
-        CrashLogger.setupCrash();
-        ImageManager.importAll();//import all images
-        this.removeAll();//remove anything from frame, clean slate.
-        menuFrame = new JFrame();
-        //set correct dimmensions.
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double menuWidth = screenSize.getWidth();
-        double menuHeight = screenSize.getHeight();
-        menuFrame.setSize((int)menuWidth, (int)menuHeight);
-        //set title, exit and size buttons.
-        menuFrame.setTitle("Road Rage");
-        menuFrame.setResizable(false);
-        menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menuFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        menuFrame.setIconImage(ImageManager.getImage(0));
-        //start painting screen onto frame.
-        menuFrame.getContentPane().add(this);
-        //startTime = System.currentTimeMillis();//have default start time for comparison
-        menuFrame.setVisible(true);
-        //BackgroundMusic.play("Race_Car_Music");//start music
-        EventLogger.logEvent("Game menu load successful");//log menu load
-        addButtons();
-        menuFrame.repaint();//start updatin graphics
-        Music.play("GameMusic");
+        try {
+            EventLogger.setupEvent();//set up logs
+            ErrorLogger.setupError();
+            CrashLogger.setupCrash();
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logIOError("Unable to set up log files", ex);
+        }
+        try {
+            ImageManager.importAll();//import all images
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logIOError("Unable to import graphics",ex);
+        }
+        try {
+            menuFrame = new JFrame();//initialize frame
+            
+            //set correct dimmensions.
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            double menuWidth = screenSize.getWidth();
+            double menuHeight = screenSize.getHeight();
+            menuFrame.setSize((int)menuWidth, (int)menuHeight);
+            
+            //set title, exit and size buttons.
+            menuFrame.setTitle("Road Rage");
+            menuFrame.setResizable(false);
+            menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            menuFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            menuFrame.setIconImage(ImageManager.getImage(0));
+            
+            //start painting screen onto frame.
+            menuFrame.getContentPane().add(this);
+            menuFrame.setVisible(true);
+            EventLogger.logEvent("Game menu load successful");//log menu load
+            addButtons();//add menu buttons
+            menuFrame.repaint();//start updatin graphics
+            Music.play("GameMusic");//play game music
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Unable to initialize menu.", ex);
+        }
     }
-    public void addButtons()
-    {
-        try
-        {
+    public void addButtons() {
+        try {
             //set fonts, size, color
             UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("Monaco", Font.BOLD, 14)));
             Font font = new Font("WLM Carton", Font.PLAIN, 52);
             Font fontSmall = new Font("WLM Carton", Font.PLAIN, 42);
             Color buttonColor = Color.black;
+            
             //create first play button
             play = new JButton("Play");
             play.setBorder(BorderFactory.createEmptyBorder());
@@ -77,15 +84,14 @@ public class MainMenu extends JPanel {
             play.setVerticalTextPosition(JButton.CENTER);
             play.setFont(font);
             play.setForeground(buttonColor);
-            final JPanel p = this;
             //what happens when button is clicked.
             play.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) 
-                {
+                public void actionPerformed(ActionEvent e) {
                     SelectPlayer selectScreen = new SelectPlayer();
                 }
             });
+            
             //add tutorial button        
             tutorial = new JButton("Tutorial");
             tutorial.setBorder(BorderFactory.createEmptyBorder());
@@ -96,9 +102,9 @@ public class MainMenu extends JPanel {
             tutorial.setForeground(buttonColor);
             tutorial.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) 
-                {
+                public void actionPerformed(ActionEvent e) {
                     TutorialSlideShow tutorial = new TutorialSlideShow();
+                    tutorial.addButtons();
                 }
             });
             
@@ -149,7 +155,6 @@ public class MainMenu extends JPanel {
             credits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-      //          SoundFX.playFX("Select");
                  JOptionPane.showMessageDialog(null, "                                                Credits\n"
                          + "                  Developed By BlackBird Mafia Studios\n"
                          + "Project Manager:                Richard Dong\n"
@@ -164,8 +169,8 @@ public class MainMenu extends JPanel {
                          + "BFXR Studios:                      Sound Production\n"
                          + "BitBucket:                             Group Code Collaberation\n"
                          + "Google Drive:                       Group Documentation Collaberation\n","Credits",JOptionPane.PLAIN_MESSAGE);
-            }
-    });
+                    }
+            });
 
             //create exit button.       
             exit = new JButton("Exit");
@@ -175,14 +180,13 @@ public class MainMenu extends JPanel {
             exit.setVerticalTextPosition(JButton.CENTER);
             exit.setFont(font);
             exit.setForeground(buttonColor);
-            exit.addActionListener(new ActionListener() 
-            {
+            exit.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) 
-                {
-                    System.exit(1);
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);//normal user exit
                 }
             });
+            
             //set positions and size of buttons, which change with screen size; add to screen. 
             play.setBounds(menuFrame.getWidth()/5, menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.setLayout(null);
@@ -193,18 +197,15 @@ public class MainMenu extends JPanel {
             this.add(highScore);
             credits.setBounds(3*menuFrame.getWidth()/5, 3*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(credits);
-
             exit.setBounds(2*menuFrame.getWidth()/5, 4*menuFrame.getHeight()/5, menuFrame.getWidth()/5, menuFrame.getHeight()/16);
             this.add(exit);   
         }
-        catch(Exception ex)
-        {
+        catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not create menu buttons",ex);
         }   
     }
     @Override
-    public void paintComponent(Graphics g)
-    {
+    public void paintComponent(Graphics g){
         try {
             g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
         }
@@ -212,21 +213,5 @@ public class MainMenu extends JPanel {
             ErrorLogger.logRuntimeError("Could not draw menu graphic", ex);
         }
         repaint();//refresh screen
-    }
-
-    /**
-     * Closes the menu.
-     */
-    public static void closeMenu()
-    {
-        try
-        {   
-            menuFrame.dispose();
-        }
-        catch(Exception ex)
-        {
-            ErrorLogger.logRuntimeError("Could not dispose frame",ex);
-        }
-    }
-    
+    }   
 }
