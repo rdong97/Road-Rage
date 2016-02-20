@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * This class manages the store and upgrades part of the game
  * @author 02-1024-0008
  */
 public class Store extends JPanel{
@@ -23,6 +23,11 @@ public class Store extends JPanel{
     private JFrame storeScreen;
     private Font font;
     
+    /**
+     * Constructor that initializes the display of the store on the user's screen
+     * @param p The player profile of the current user playing the game and 
+     * attempting to upgrade their vehicle
+     */
     public Store(PlayerProfile p) {
         try
         {
@@ -44,6 +49,10 @@ public class Store extends JPanel{
             ErrorLogger.logRuntimeError("Could not initialize store screen",ex);
         }
     }
+    
+    /**
+     * Update the display based on the current user's information
+     */
     public void updateInfo() {
         //write new info based on upgraded stats
         try {
@@ -71,6 +80,7 @@ public class Store extends JPanel{
             ErrorLogger.logRuntimeError("Could not save store updated player profile.", ex);
         }
     }
+    
     @Override
     public void paintComponent(Graphics g)
     {
@@ -83,6 +93,10 @@ public class Store extends JPanel{
         repaint();//refresh screen
     }
     
+    /**
+     * Create the buttons necessary for the user to be able to effectively use 
+     * the store
+     */
     public void createButtons() {
         try {
             JButton upgradeHealthButton = new JButton();
@@ -151,4 +165,3 @@ public class Store extends JPanel{
         }
     }
 }
-

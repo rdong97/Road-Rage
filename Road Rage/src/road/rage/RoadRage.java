@@ -1,7 +1,7 @@
 package road.rage;
 
 /**
- *
+ * Main class for the Road Rage game
  * @author 02-1024-0008
  */        
 public class RoadRage {

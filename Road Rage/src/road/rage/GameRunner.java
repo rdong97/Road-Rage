@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- *
+ * Class dedicated to running the game and updating all key variables
  * @author 02-1024-0008
  */
 public class GameRunner extends JPanel implements KeyListener, MouseListener{
@@ -36,6 +36,10 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     public static boolean gunShot;
     private PlayerProfile currentProfile;
     
+    /**
+     * Launch the game for the current user
+     * @param p The current player's profile
+     */
     public void launchRun(PlayerProfile p) {
         try {
             MainMenu.menuFrame.dispose();
@@ -83,6 +87,10 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
             ErrorLogger.logRuntimeError("Could not initialize current profile, HUD, road objects, key listeners, or other frame items.", ex);    
         }
     }
+    
+    /**
+     * Display the road for the game and update the screen if necessary
+     */
     public void startPaint() {
         //new timer for repaint rate
         try {

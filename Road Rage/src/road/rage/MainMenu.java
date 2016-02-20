@@ -17,7 +17,7 @@ import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
 /**
- *
+ * Class dedicated to displaying the main menu
  * @author 02-1024-0008
  */
 public class MainMenu extends JPanel {
@@ -25,6 +25,9 @@ public class MainMenu extends JPanel {
     public static JFrame menuFrame;
     private JButton play, tutorial, credits, highScore, next, back, exit;  
     
+    /**
+     * Display the main menu
+     */
     public void startMenu() {
         try {
             EventLogger.setupEvent();//set up logs
@@ -68,6 +71,11 @@ public class MainMenu extends JPanel {
             ErrorLogger.logRuntimeError("Unable to initialize menu.", ex);
         }
     }
+    
+    /**
+     * Add the buttons needed for the user to select options displayed by the 
+     * main menu
+     */
     public void addButtons() {
         try {
             //set fonts, size, color

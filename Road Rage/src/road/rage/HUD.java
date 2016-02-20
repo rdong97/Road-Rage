@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 /**
- *
+ * Class dedicated to displaying the basic information about the current game
+ * (player name, score, ammo, maximum value for ammo, health and maximum health)
  * @author 02-1024-0008
  */
 public class HUD {
@@ -19,6 +20,9 @@ public class HUD {
     private double timeElapsed;
     private int score, ammo, maxAmmo, health, maxHealth;
     
+    /**
+     * Display a generic HUD for a Default Player
+     */
     public HUD() {
         profileName = "Default Player";
         score = 0;
@@ -27,6 +31,15 @@ public class HUD {
         health = 100;
         maxHealth = 100;
     }
+    
+    /**
+     * Display a HUD with a specific player name, score, health, maximum health,
+     * ammo and maximum ammo
+     * @param n the name of the current player
+     * @param s the score of the current player
+     * @param h the maximum health for the current player
+     * @param a the maximum ammo for the current player
+     */
     public HUD(String n, int s, int h, int a) {
         profileName = n;
         score = s;
@@ -35,6 +48,10 @@ public class HUD {
         health = h;
         maxHealth = h;
     }
+    
+    /**
+     * Start the timer for the game
+     */
     public void startTimer() {     
         int delay = 100;
         ActionListener task = new ActionListener() {
@@ -46,6 +63,12 @@ public class HUD {
         timer =new Timer(delay, task);
         timer.start();
     }
+    
+    /**
+     * Get the current user's statistics 
+     * @param stats An ArrayList that contains the statistics of the current 
+     * user
+     */
     public void liveUpdateHUD(ArrayList<Integer>stats) {
         score = stats.get(0);
         health = stats.get(1);
@@ -53,6 +76,11 @@ public class HUD {
         ammo = stats.get(3);
         maxAmmo = stats.get(4);
     }
+    
+    /**
+     * Draw the window for the HUD
+     * @param window The graphics window for the HUD
+     */
     public void draw(Graphics window) {
         try {
             Font myFont=new Font("Impact",Font.PLAIN, 20);

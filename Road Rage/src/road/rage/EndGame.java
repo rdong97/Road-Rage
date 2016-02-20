@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * Prints the end game screen with different options for the user to select what
+ * they desire to do
  * @author 02-1024-0008
  */
 public class EndGame extends JPanel {
@@ -22,6 +23,11 @@ public class EndGame extends JPanel {
     private JFrame endScreen;
     private Font font;
 
+    /**
+     * Display the end game screen and copy the player profile that needs to be
+     * saved
+     * @param p The PlayerProfile of the current player of the game
+     */
     public EndGame(PlayerProfile p) {
         try {
             endScreen = new JFrame();
@@ -42,6 +48,10 @@ public class EndGame extends JPanel {
             ErrorLogger.logRuntimeError("Could not launch end game frame.",ex);
         }
     }
+    
+    /**
+     * Create the end game screen menu buttons
+     */
     public void createButtons() {
         try {
             //restart game button
@@ -106,6 +116,7 @@ public class EndGame extends JPanel {
             ErrorLogger.logRuntimeError("Could not add end game frame buttons.", ex);
         }
     }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -117,7 +128,9 @@ public class EndGame extends JPanel {
         }
         repaint();//refresh screen
     }
-    
+    /**
+     * Save the profile of the user of the current game.
+     */
     public void saveProfile() {
         try {
             SaveLoad.updateSaveProfile(playerProfile);

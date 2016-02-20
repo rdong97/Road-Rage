@@ -26,6 +26,9 @@ public class TutorialSlideShow extends JPanel {
     private final int numberSlides=3;
     private Font font;
     
+    /**
+     * Display the tutorial menu for the user to learn how to play the game
+     */
     public TutorialSlideShow() {
         try {
             tutorialScreen = new JFrame();
@@ -55,6 +58,10 @@ public class TutorialSlideShow extends JPanel {
         currentSlideNumber = 0;
     }
     
+    /**
+     * Add the buttons for the user to select options that are displayed in the 
+     * tutorial
+     */
     public void addButtons() {
         try {
             JButton back = new JButton();

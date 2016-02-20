@@ -14,7 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * Class that allows for the user to select the correct player profile to play
+ * for
  * @author 02-1024-0008
  */
 public class SelectPlayer extends JPanel {

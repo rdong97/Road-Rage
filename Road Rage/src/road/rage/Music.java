@@ -8,7 +8,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- *
+ * Class dedicated to playing a song
  * @author 02-1024-0008
  */
 public class Music {
@@ -45,7 +45,9 @@ public class Music {
         }
     }
     
-
+    /**
+     * Stop the song that is currently playing
+     */
     public static void stop() {
         try {
             if(clip!=null) {

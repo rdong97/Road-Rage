@@ -9,11 +9,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Class that allows for the current user to save the current player profile or
+ * load a previous profile.
  * @author 02-1024-0008
  */
 public class SaveLoad {
     
+    /**
+     * Get the list of the past player profiles
+     * @return  profileList which is the variable that stores the list of all
+     * past player profiles
+     */
     public static ArrayList<PlayerProfile> getProfiles() {
         ArrayList<PlayerProfile>profileList= new ArrayList<>();//list of profile
         try {
@@ -42,6 +48,11 @@ public class SaveLoad {
         }
         return null;//catch all if no profiles to return
     }
+    
+    /**
+     * Save the current user profile to the list of user profiles
+     * @param list The current list of past saved profiles
+     */
     public static void saveProfileList(ArrayList<PlayerProfile>list) {
         ArrayList<PlayerProfile> profileList = list;
         try {
@@ -61,6 +72,12 @@ public class SaveLoad {
             ErrorLogger.logRuntimeError("Unknown error, unable to save profile", ex);
         }
     }
+    
+    /**
+     * Update a saved profile
+     * @param profile The profile with the name of an old profile but with the 
+     * new information
+     */
     public static void updateSaveProfile(PlayerProfile profile) {
         ArrayList<PlayerProfile>list = getProfiles();
         try {
