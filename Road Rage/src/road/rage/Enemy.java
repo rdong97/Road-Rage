@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- *
+ * Class dedicated to controlling the enemies
  * @author 02-1024-0008
  */
 public class Enemy extends Vehicle {
@@ -13,6 +13,9 @@ public class Enemy extends Vehicle {
     private ArrayList<Debris>debrisList;
     private int randomizer;
     
+    /**
+     * Create a generic enemy
+     */
     public Enemy() {
         super();
         try {
@@ -23,6 +26,19 @@ public class Enemy extends Vehicle {
             ErrorLogger.logRuntimeError("Could not initialize enemy object.", ex);
         }
     }
+    
+    /**
+     * Create an enemy with a specified location, velocity, health, maximum
+     * health and dimensions
+     * @param x the x-coordinate of the location of the enemy
+     * @param y the y-coordinate of the location of the enemy
+     * @param xs the horizontal speed of the enemy
+     * @param ys the vertical speed of the enemy
+     * @param w the width of the enemy
+     * @param l the length of the enemy
+     * @param h the health of the enemy
+     * @param mh the maximum health of the enemy
+     */
     public Enemy(int x, int y, int xs, int ys, int w, int l, int h, int mh) {
         super(x,y,xs,ys,w,l,h,mh);
         try {
@@ -33,6 +49,15 @@ public class Enemy extends Vehicle {
             ErrorLogger.logRuntimeError("Could not initialize enemy object.", ex);
         }
     }
+    
+    /**
+     * Find the horizontal speed that the enemy must take in order to continue to
+     * chase the user
+     * @param list A list containing the pertinent information about all debris 
+     * on the map
+     * @return The speed needed to take by the enemy in order to successfully chase
+     * the user without crashing
+     */
     public int findXSpeed(ArrayList<Debris>list)//AI for calculating anticollision
     {
         try {

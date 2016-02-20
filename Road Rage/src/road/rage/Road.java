@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 /**
- *
+ * Class that controls the road displayed on the screen
  * @author 02-1024-0008
  */
 public class Road {
@@ -19,6 +19,10 @@ public class Road {
     private Timer enemySpawnTimer;
     private int spawnTime;
     
+    /**
+     * Initiate the start of the game
+     * @param p The player profile of the current user playing the game
+     */
     public Road(PlayerProfile p) {
         try {
             hunter = new Hunter(p.getScore(),p.getMaxHealth(),p.getMaxAmmo());  
@@ -30,6 +34,11 @@ public class Road {
             ErrorLogger.logRuntimeError("Unable to initialize road objects", ex);
         }
     }
+    
+    /**
+     * Check to see that the debris class is working by spawning blank debris
+     * fields
+     */
     public void spawnInitialDebris() {
         try {
             debrisList.add(new Debris(0,-900,0,3,1));//initial blank debris fields
@@ -41,6 +50,10 @@ public class Road {
             ErrorLogger.logRuntimeError("Unable to spawn initial debris.", ex);
         }
     }
+    
+    /**
+     * Spawn a debris of random type with specified dimensions and speed
+     */
     public void spawnNewDebris() {
         try {
             int randomType = (int)(Math.random()*4+1); //random number between 1 and 4
@@ -50,6 +63,10 @@ public class Road {
             ErrorLogger.logRuntimeError("Unable to spawn new random debris.", ex);
         }
     }
+    
+    /**
+     * Remove the debris on the street
+     */
     public void removeDebris() {
         try {
             Debris toRemove = null;
@@ -68,6 +85,9 @@ public class Road {
         }
     }
     
+    /**
+     * Set the spawn speed of the enemies
+     */
     public void setEnemySpawnSpeed() {
         try {
             spawnTime = 5000; //original 5000 millisecond (5 second) spawn time
@@ -79,6 +99,10 @@ public class Road {
         }
         
     }
+    
+    /**
+     * 
+     */
     public void startSpawnEnemy() {
         ActionListener timerListener = new ActionListener() {
             @Override
@@ -114,6 +138,10 @@ public class Road {
         }
     }
     
+    /**
+     * 
+     * @param toMatch 
+     */
     public void removeEnemy(Enemy toMatch) {
         try {
             Enemy toRemove = null;
@@ -132,6 +160,10 @@ public class Road {
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean hasGameEnded() {
         try {
             for(Enemy e:enemyList) {
@@ -148,6 +180,10 @@ public class Road {
         }
         return false;//default
     }
+    
+    /**
+     * 
+     */
     public void checkCollisions() {
         //establish points for Hunter hitbox
         ArrayList<Point>hunterDamagePoints = new ArrayList<>();
@@ -252,6 +288,10 @@ public class Road {
             ErrorLogger.logRuntimeError("Could not check collision between enemy and bullet.", ex);
         }
     }
+    
+    /**
+     * 
+     */
     public void updateEntityLocations() {
         try {
             //update only if game is still running
@@ -273,6 +313,11 @@ public class Road {
             ErrorLogger.logRuntimeError("Could not make commands to move objects", ex);
         }
     }
+    
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Integer>getLiveStats() {
         try {
             ArrayList<Integer>stats = new ArrayList<Integer>();
@@ -288,6 +333,11 @@ public class Road {
             return null;
         } 
     }
+    
+    /**
+     * 
+     * @param window 
+     */
     public void draw(Graphics window) {
         try {
             if(!hasGameEnded()){

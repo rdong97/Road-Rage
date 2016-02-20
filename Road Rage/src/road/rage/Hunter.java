@@ -1,7 +1,7 @@
 package road.rage;
 
 /**
- *
+ * Class dedicated to the hunter that chases the user
  * @author 02-1024-0008
  */
 import java.awt.Graphics;
@@ -14,6 +14,9 @@ public class Hunter extends Vehicle {
     private int score,ammo,maxAmmo;
     private Timer incrementTimer;
     
+    /**
+     * Create a generic hunter
+     */
     public Hunter() {
         super(440,600,0,0,60,80,100,100);
         try {
@@ -26,6 +29,13 @@ public class Hunter extends Vehicle {
         }
         
     }
+    
+    /**
+     * Create a hunter with specified score, health and ammo
+     * @param s the score of the hunter
+     * @param h the maximum health of the hunter
+     * @param a the maximum amount of ammo for the hunter
+     */
     public Hunter(int s, int h, int a) {
         super(440,600,0,0,60,80,h,h);
         try {
@@ -37,25 +47,60 @@ public class Hunter extends Vehicle {
             ErrorLogger.logRuntimeError("Could not initialize hunter.", ex);
         }      
     }
+    
+    /**
+     * Return the amount of ammo that the hunter currently has
+     * @return ammo which is the variable that stores the current amount of ammo
+     * that the hunter has
+     */
     public int getAmmo() {
         return ammo;
     }
+    
+    /**
+     * Return the maximum amount of ammo the hunter can have
+     * @return maxAmmo which is the variable that stores the maximum possible
+     * amount of ammo for the hunter to have
+     */
     public int getMaxAmmo() {
         return maxAmmo;
     }
+    
+    /**
+     * Return the score of the hunter
+     * @return score which is the variable that stores the score of the hunter
+     */
     public int getScore() {
         return score;
     }
     
+    /**
+     * Set the hunter's current ammo to a specified value
+     * @param a the value to set the hunter's current amount of ammo to
+     */
     public void setAmmo(int a) {
         ammo = a;
     }
+    
+    /**
+     * Set the hunter's maximum possible value of ammo to a specified value
+     * @param a the value to set the hunter's maximum possible amount of ammo to
+     */
     public void setMaxAmmo(int a) {
         maxAmmo = a ;
     }
+    
+    /**
+     * Set the hunter's score to a specified value
+     * @param s the value to set the hunter's score to
+     */
     public void setScore(int s) {
         score = s;
     }
+    
+    /**
+     * Start the timer that manages the attacks by the hunter
+     */
     public void startIncrementalTimers() {     
         try {
             int delay = 1000;//increase every 1000 milliseconds
@@ -79,6 +124,11 @@ public class Hunter extends Vehicle {
             ErrorLogger.logRuntimeError("Could not setup hunter health and ammo increase rate.", ex);
         }
     }
+    
+    /**
+     * Find the new velocity the hunter must take in order to effectively chase
+     * the user
+     */
     public void findXSpeed() {
         try {
             setXSpeed(0);//default if no keys are pressed
@@ -97,6 +147,7 @@ public class Hunter extends Vehicle {
             ErrorLogger.logRuntimeError("Could not calcuate hunter speed based on keystrokes.", ex);
         }
     }
+    
     @Override
     public void draw(Graphics window) {
         try {

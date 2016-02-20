@@ -5,6 +5,7 @@
 package road.rage;
 
 /**
+ * Class dedicated to locations of objects
  * @author 02-1024-0008
  */
 
@@ -48,4 +49,3 @@ public interface Location
      */
     public void findNextLocation();
 }
-
