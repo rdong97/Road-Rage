@@ -109,11 +109,19 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         }  
     }
     
+    /**
+     * Draw the image that is to appear in the screen
+     * @param graphics the specified graphics by which to draw the game
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
     }
     
+    /**
+     * Draw the screen of the game if the game hasn't ended
+     * @param g The specified graphics by which to draw the background
+     */
     @Override
     public void paint(Graphics g) {    
         try {

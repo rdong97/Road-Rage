@@ -203,8 +203,8 @@ public class Debris extends Entity {
         }       
     }
     /**
-     * 
-     * @param window 
+     * Draw the debris in the screen
+     * @param window The window in which to draw the debris.
      */
     @Override
     public void draw(Graphics window) {

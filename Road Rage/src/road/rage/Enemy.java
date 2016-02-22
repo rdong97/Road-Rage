@@ -117,6 +117,10 @@ public class Enemy extends Vehicle {
     }
     
     @Override
+    /**
+     * Draw the enemy in the given screen
+     * @param window The window in which to draw the enemy
+     */
     public void draw(Graphics window) {
         try {
             int imageNum = 1;//will change based on skin

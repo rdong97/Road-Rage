@@ -15,7 +15,7 @@ public class Hunter extends Vehicle {
     private Timer incrementTimer;
     
     /**
-     * Create a generic hunter
+     * Create a generic hunter with predetermined characteristics.
      */
     public Hunter() {
         super(440,600,0,0,60,80,100,100);
@@ -148,6 +148,10 @@ public class Hunter extends Vehicle {
         }
     }
     
+    /**
+     * Draw the hunter
+     * @param window The window in which to draw the hunter
+     */
     @Override
     public void draw(Graphics window) {
         try {

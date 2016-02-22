@@ -52,18 +52,30 @@ public abstract class Entity implements Location {
     }
     
     @Override
+    /**
+     * Return the x-coordinate of the entity.
+     */
     public int getXCoordinate() {
         return xCoordinate;
     }
     @Override
+    /**
+     * Return the y-coordinate of the entity.
+     */
     public int getYCoordinate() {
         return yCoordinate;
     }
     @Override
+    /**
+     * Return the width of the entity.
+     */
     public int getXWidth() {
         return xWidth;
     }
     @Override
+    /**
+     * Return the length of the entity.
+     */
     public int getYLength() {
         return yLength;
     }
@@ -118,6 +130,9 @@ public abstract class Entity implements Location {
         ySpeed = y;
     }
     @Override
+    /**
+     * Find the next location the entity should move to.
+     */
     public void findNextLocation(){ 
         try {
             setXCoordinate(getXCoordinate()+getXSpeed());
@@ -128,5 +143,9 @@ public abstract class Entity implements Location {
         }
     }
     @Override
+    /**
+     * Draw the entity in the given window
+     * @param window the window in which to draw the entity
+     */
     public abstract void draw(Graphics window);
 }

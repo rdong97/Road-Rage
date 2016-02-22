@@ -212,6 +212,11 @@ public class MainMenu extends JPanel {
             ErrorLogger.logRuntimeError("Could not create menu buttons",ex);
         }   
     }
+    
+    /**
+     * Draw the main menu screen
+     * @param g The specified graphics to draw the main menu
+     */
     @Override
     public void paintComponent(Graphics g){
         try {
