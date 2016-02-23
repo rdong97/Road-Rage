@@ -36,7 +36,10 @@ public class ImageManager
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayCenter.png"))); //10
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayRight.png"))); //11
             
-            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Enemy1.png"))); //11
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Enemy1.png"))); //12
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HUD.png"))); //13
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/EndScreen.png"))); //14
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Screen.png"))); //15
             
 
             Thread.sleep(10);    

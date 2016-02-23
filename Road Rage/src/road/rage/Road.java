@@ -96,8 +96,7 @@ public class Road {
         }
         catch(RuntimeException ex) {
             ErrorLogger.logRuntimeError(null, ex);
-        }
-        
+        }        
     }
     
     /**
@@ -153,6 +152,7 @@ public class Road {
             if(toRemove!=null) {
                 enemyList.remove(toRemove);
                 hunter.setScore(hunter.getScore()+10);
+                Music.play("Explosion");
             }
         }
         catch(RuntimeException ex) {
@@ -244,7 +244,7 @@ public class Road {
                 for(Point p:hunterDamagePoints) {
                     if(p.getX()>e.getXCoordinate()&&p.getX()<e.getXCoordinate()+e.getXWidth()) {
                         if(p.getY()>e.getYCoordinate()&&p.getY()<e.getYCoordinate()+e.getYLength()) {
-                            hunter.setHealth(hunter.getHealth()-5);
+                            hunter.setHealth(hunter.getHealth()-50);
                             if(toRemove1 == null) {
                                 toRemove1 = e;//first slot for enemy to be removed
                             }

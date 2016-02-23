@@ -67,6 +67,7 @@ public class EndGame extends JPanel {
                 public void actionPerformed(ActionEvent e) {
                     GameRunner newGame = new GameRunner();
                     newGame.launchRun(playerProfile);
+                    Music.play("ButtonSound");
                     Music.play("GameMusic");
                     endScreen.dispose();
                 }
@@ -88,6 +89,7 @@ public class EndGame extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     MainMenu newMenu = new MainMenu();
+                    Music.play("ButtonSound");
                     newMenu.startMenu(); //launch menu
                     endScreen.dispose(); //dispose of end game frame
                 }
@@ -106,6 +108,7 @@ public class EndGame extends JPanel {
             exit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    Music.play("ButtonSound");
                     System.exit(0);//game exits
                 }
             });
@@ -124,7 +127,7 @@ public class EndGame extends JPanel {
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(14),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw end game frame graphic.", ex);

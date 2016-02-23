@@ -97,6 +97,7 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     SelectPlayer selectScreen = new SelectPlayer();
+                    Music.play("ButtonSound");
                 }
             });
             
@@ -112,6 +113,7 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     TutorialSlideShow tutorial = new TutorialSlideShow();
+                    Music.play("ButtonSound");
                     tutorial.addButtons();
                 }
             });
@@ -128,6 +130,7 @@ public class MainMenu extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
+                    Music.play("ButtonSound");
                     ArrayList<PlayerProfile>profileList = SaveLoad.getProfiles();
                     int maxIndex;
                     PlayerProfile tmp;
@@ -163,7 +166,8 @@ public class MainMenu extends JPanel {
             credits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 JOptionPane.showMessageDialog(null, "                                                Credits\n"
+                Music.play("ButtonSound");
+                JOptionPane.showMessageDialog(null, "                                                Credits\n"
                          + "                  Developed By BlackBird Mafia Studios\n"
                          + "Project Manager:                Richard Dong\n"
                          + "Lead Developer:                 Richard Dong\n"
@@ -191,6 +195,7 @@ public class MainMenu extends JPanel {
             exit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    Music.play("ButtonSound");
                     System.exit(0);//normal user exit
                 }
             });

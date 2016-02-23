@@ -123,7 +123,7 @@ public class Enemy extends Vehicle {
      */
     public void draw(Graphics window) {
         try {
-            int imageNum = 11;//will change based on skin
+            int imageNum = 12;//will change based on skin
             window.drawImage(ImageManager.getImage(imageNum), getXCoordinate(), getYCoordinate(), getXWidth(), getYLength(), null);
         }
         catch(RuntimeException ex) {

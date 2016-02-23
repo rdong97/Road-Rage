@@ -13,7 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class Music {
     private static Clip clip;
-
+    private static Clip gameMusic;
     /**
      * Plays a specific song
      * @param name the song to play.
@@ -28,8 +28,11 @@ public class Music {
                     audioIn = AudioSystem.getAudioInputStream(Music.class.getResource("Music/"+songName+".wav"));//set path
                     clip = AudioSystem.getClip();//gets clip
                     clip.open(audioIn);//opens clip
-                    clip.start();//plays song
-                    clip.loop(Clip.LOOP_CONTINUOUSLY);
+                    clip.start();//plays song         
+                    if(name.equals("GameMusic")) {
+                        clip.loop(Clip.LOOP_CONTINUOUSLY);
+                        gameMusic = clip;
+                    }
                 } 
                 catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
                     ErrorLogger.logIOError("Music could not load: IOException",ex);
@@ -50,9 +53,9 @@ public class Music {
      */
     public static void stop() {
         try {
-            if(clip!=null) {
-                clip.stop();
-                clip = null;
+            if(gameMusic!=null) {
+                gameMusic.stop();
+                gameMusic = null;
             }
         }
         catch(Exception ex) {

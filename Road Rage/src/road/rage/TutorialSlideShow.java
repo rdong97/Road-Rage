@@ -76,6 +76,7 @@ public class TutorialSlideShow extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentSlideNumber--;
+                    Music.play("ButtonSound");
                     if(currentSlideNumber<0) {
                         tutorialScreen.dispose();
                     }
@@ -98,6 +99,7 @@ public class TutorialSlideShow extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentSlideNumber++;
+                    Music.play("ButtonSound");
                     addButtons();
                     repaint();
                 }

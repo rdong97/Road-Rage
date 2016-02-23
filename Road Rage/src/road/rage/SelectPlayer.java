@@ -31,7 +31,7 @@ public class SelectPlayer extends JPanel {
         try{
             selectScreen = new JFrame();
             font = new Font("Arial", Font.PLAIN, 12);//set font
-            selectScreen.setSize(400, 200);
+            selectScreen.setSize(400, 100);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//size
             selectScreen.setLocation((int)(screenSize.getWidth()/2)-200,(int)(screenSize.getHeight()/2)-100);//set location to center
             selectScreen.setTitle("Select User");//title
@@ -90,12 +90,13 @@ public class SelectPlayer extends JPanel {
                 public void actionPerformed(ActionEvent e) 
                 {
                     selectScreen.dispose();
+                    Music.play("ButtonSound");
                     Store storeScreen = new Store(p);
                     storeScreen.updateInfo();
                     storeScreen.createButtons();
                 }
             });
-            button.setBounds(100*slot, 120, 100, 20);//set location
+            button.setBounds(100*slot, 20, 100, 20);//set location
             this.add(button);//add to frame.
         }
         catch(Exception ex) {
@@ -110,7 +111,7 @@ public class SelectPlayer extends JPanel {
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(15),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw select player menu graphic", ex);

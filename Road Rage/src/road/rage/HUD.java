@@ -91,6 +91,16 @@ public class HUD {
             ErrorLogger.logRuntimeError("Could not set HUD font.", ex);
         }
         try {
+            window.drawImage(ImageManager.getImage(13), 900, 0, 300, 900, null);
+            window.drawString("Name: "+profileName, 950,200);
+            window.drawString("Score: "+score, 950,400);
+            window.drawString("Health: "+health+"/"+maxHealth, 950,500);
+            window.drawString("Ammo: "+ammo+"/"+maxAmmo, 950,600);
+        }
+        catch(RuntimeException ex) {
+            ErrorLogger.logRuntimeError("Could not draw non-time items onto HUD.", ex);
+        }
+        try {
             String displayTime=timeElapsed+"";
             if(timeElapsed<10) {
                 displayTime=displayTime.substring(0,3);
@@ -108,16 +118,6 @@ public class HUD {
         }
         catch(RuntimeException ex) {
             ErrorLogger.logRuntimeError("Could not format and display time.", ex);
-        }
-        try {
-            window.drawImage(ImageManager.getImage(0), 900, 0, 300, 900, null);
-            window.drawString("Name: "+profileName, 950,200);
-            window.drawString("Score: "+score, 950,400);
-            window.drawString("Health: "+health+"/"+maxHealth, 950,500);
-            window.drawString("Ammo: "+ammo+"/"+maxAmmo, 950,600);
-        }
-        catch(RuntimeException ex) {
-            ErrorLogger.logRuntimeError("Could not draw non-time items onto HUD.", ex);
         }
     }
 }

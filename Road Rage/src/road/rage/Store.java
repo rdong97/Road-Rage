@@ -90,7 +90,7 @@ public class Store extends JPanel{
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(0),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(15),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw store graphic", ex);
@@ -118,6 +118,7 @@ public class Store extends JPanel{
                     if(playerProfile.getScore()>100) {
                         playerProfile.setMaxHealth(playerProfile.getMaxHealth()+10);
                         playerProfile.setScore(playerProfile.getScore()-100);
+                        Music.play("ButtonSound");
                     }
                     updateInfo();
                 }
@@ -139,6 +140,7 @@ public class Store extends JPanel{
                     if(playerProfile.getScore()>100) {
                         playerProfile.setMaxAmmo(playerProfile.getMaxAmmo()+10);
                         playerProfile.setScore(playerProfile.getScore()-100);
+                        Music.play("ButtonSound");
                     }
                     updateInfo();
                 }
@@ -157,6 +159,7 @@ public class Store extends JPanel{
             startGame.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    Music.play("ButtonSound");
                     storeScreen.dispose();
                     GameRunner newGame = new GameRunner();
                     newGame.launchRun(playerProfile);

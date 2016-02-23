@@ -211,6 +211,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         int screenY = e.getY();
         hitPoint.move(screenX,screenY);
         gunShot = true; //set to false when calculated hit location
+        Music.play("GunshotSound");
     }
 
     @Override
