@@ -36,9 +36,8 @@ public class ImageManager
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayCenter.png"))); //10
             images.add(ImageIO.read(ImageManager.class.getResource("Graphics/HighwayRight.png"))); //11
             
-            //entities
-            //images.add(ImageIO.read(ImageManager.class.getResource(""))); //0
-            //images.add(ImageIO.read(ImageManager.class.getResource(""))); //1
+            images.add(ImageIO.read(ImageManager.class.getResource("Graphics/Enemy1.png"))); //11
+            
 
             Thread.sleep(10);    
             EventLogger.logEvent("Images successfully loaded");
