@@ -36,8 +36,7 @@ public class Road {
     }
     
     /**
-     * Check to see that the debris class is working by spawning blank debris
-     * fields
+     * Spawning blank debris fields at start of the game.
      */
     public void spawnInitialDebris() {
         try {
@@ -52,7 +51,7 @@ public class Road {
     }
     
     /**
-     * Spawn a debris of random type with specified dimensions and speed
+     * Spawn a debris of random type with specified dimensions and speed.
      */
     public void spawnNewDebris() {
         try {
@@ -65,7 +64,7 @@ public class Road {
     }
     
     /**
-     * Remove the debris on the street
+     * Remove the debris on the road once it exits the screen.
      */
     public void removeDebris() {
         try {
@@ -86,7 +85,7 @@ public class Road {
     }
     
     /**
-     * Set the spawn speed of the enemies
+     * Set the spawn speed of the enemies.
      */
     public void setEnemySpawnSpeed() {
         try {

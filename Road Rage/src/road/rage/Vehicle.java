@@ -12,7 +12,7 @@ public abstract class Vehicle extends Entity{
     private int health, maxHealth;
     
     /**
-     * Construct a vehicle with 0 health and 0 max health
+     * Default vehicle with 0 health and 0 max health.
      */
     public Vehicle() {
         super();

@@ -51,7 +51,7 @@ public class Store extends JPanel{
     }
     
     /**
-     * Update the display based on the current user's information
+     * Update the display based on the current user's information.
      */
     public void updateInfo() {
         //write new info based on upgraded stats
@@ -90,7 +90,7 @@ public class Store extends JPanel{
     
     
     /**
-     * Draw the store menu
+     * Draw the store menu.
      * @param g the specified graphics to draw the store menu
      */
     @Override
@@ -107,7 +107,7 @@ public class Store extends JPanel{
     
     /**
      * Create the buttons necessary for the user to be able to effectively use 
-     * the store
+     * the store.
      */
     public void createButtons() {
         try {

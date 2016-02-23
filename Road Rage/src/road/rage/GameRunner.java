@@ -89,7 +89,7 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     }
     
     /**
-     * Display the road for the game and update the screen if necessary
+     * Display the road for the game and update the screen if necessary.
      */
     public void startPaint() {
         //new timer for repaint rate
@@ -163,6 +163,10 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
     @Override
     public void keyTyped(KeyEvent e) {}
 
+    /**
+     * Register a key press.
+     * @param e The specified keyEvent code
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         try {
@@ -183,7 +187,11 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
             ErrorLogger.logRuntimeError("Could not register key press.", ex);
         }
     }
-
+    
+    /**
+     * Register a key release.
+     * @param e The specified keyEvent code
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         try {
@@ -205,6 +213,10 @@ public class GameRunner extends JPanel implements KeyListener, MouseListener{
         } 
     }
 
+    /**
+     * Register a mouse click.
+     * @param e The specified mouseEvent code
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         int screenX = e.getX();

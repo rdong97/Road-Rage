@@ -21,7 +21,7 @@ public class HUD {
     private int score, ammo, maxAmmo, health, maxHealth;
     
     /**
-     * Display a generic HUD for a Default Player
+     * Display a generic HUD for a Default Player.
      */
     public HUD() {
         profileName = "Default Player";
@@ -50,7 +50,7 @@ public class HUD {
     }
     
     /**
-     * Start the timer for the game
+     * Start the timer for the game.
      */
     public void startTimer() {     
         int delay = 100;

@@ -49,7 +49,7 @@ public class Music {
     }
     
     /**
-     * Stop the song that is currently playing
+     * Stop the main game song.
      */
     public static void stop() {
         try {

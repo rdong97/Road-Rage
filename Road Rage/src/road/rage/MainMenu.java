@@ -26,7 +26,7 @@ public class MainMenu extends JPanel {
     private JButton play, tutorial, credits, highScore, next, back, exit;  
     
     /**
-     * Display the main menu
+     * Display the main menu.
      */
     public void startMenu() {
         try {
@@ -74,7 +74,7 @@ public class MainMenu extends JPanel {
     
     /**
      * Add the buttons needed for the user to select options displayed by the 
-     * main menu
+     * main menu.
      */
     public void addButtons() {
         try {
@@ -219,7 +219,7 @@ public class MainMenu extends JPanel {
     }
     
     /**
-     * Draw the main menu screen
+     * Draw the main menu screen.
      * @param g The specified graphics to draw the main menu
      */
     @Override

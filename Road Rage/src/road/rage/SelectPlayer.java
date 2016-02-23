@@ -14,8 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- * Class that allows for the user to select the correct player profile to play
- * for
+ * Class that allows for the user to select the correct player profile to play.
  * @author 02-1024-0008
  */
 public class SelectPlayer extends JPanel {
@@ -103,11 +102,12 @@ public class SelectPlayer extends JPanel {
             ErrorLogger.logRuntimeError("Could not create select player buttons", ex);
         }
     }
-    @Override
+      
     /**
      * Draw the player selection menu.
      * @param g the specified graphics by which to draw the player selection menu.
      */
+    @Override
     public void paintComponent(Graphics g)
     {
         try {

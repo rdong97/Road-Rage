@@ -27,7 +27,6 @@ public class Hunter extends Vehicle {
         catch(RuntimeException ex) {
             ErrorLogger.logRuntimeError("Could not initialize hunter.", ex);
         }
-        
     }
     
     /**
@@ -99,7 +98,7 @@ public class Hunter extends Vehicle {
     }
     
     /**
-     * Start the timer that manages the attacks by the hunter
+     * Start the timer that manages the attacks by the hunter.
      */
     public void startIncrementalTimers() {     
         try {
@@ -127,7 +126,7 @@ public class Hunter extends Vehicle {
     
     /**
      * Find the new velocity the hunter must take in order to effectively chase
-     * the user
+     * the user.
      */
     public void findXSpeed() {
         try {
@@ -149,7 +148,7 @@ public class Hunter extends Vehicle {
     }
     
     /**
-     * Draw the hunter
+     * Draw the hunter.
      * @param window The window in which to draw the hunter
      */
     @Override

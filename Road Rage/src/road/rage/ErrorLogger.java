@@ -81,7 +81,9 @@ public class ErrorLogger {
             EventLogger.logEvent("IO Exception occurred, prompted user to exit. Description: " + message);
             fhError.close();//finish logging error
             Object[] options = { "OK", "CANCEL" };//prep screen for user message
-            int num = JOptionPane.showOptionDialog(null, "A non-recoverable error has occurred. Press OK to exit.", "Warning",
+            int num = JOptionPane.showOptionDialog(null, "A non-recoverable error has occurred."
+                    + "Send CrashLogger.txt to developers at CrashLogs@bms.com."
+                    + " Press OK to exit.", "Warning",
             JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
             if(num == JOptionPane.YES_OPTION) {
                 EventLogger.logEvent("User selected to end game after IOException");

@@ -10,7 +10,7 @@ public abstract class Entity implements Location {
     public int xCoordinate, yCoordinate, xWidth, yLength, xSpeed, ySpeed;
     
     /***
-     * Default entity
+     * Default entity.
      */
     public Entity() {
         //default entity
@@ -50,25 +50,27 @@ public abstract class Entity implements Location {
             ErrorLogger.logRuntimeError("Could not initialize parent entity", ex);
         }
     }
-    
-    @Override
+   
     /**
      * Return the x-coordinate of the entity.
      */
+    @Override
     public int getXCoordinate() {
         return xCoordinate;
     }
-    @Override
+    
     /**
      * Return the y-coordinate of the entity.
      */
+    @Override
     public int getYCoordinate() {
         return yCoordinate;
     }
-    @Override
+    
     /**
      * Return the width of the entity.
      */
+    @Override
     public int getXWidth() {
         return xWidth;
     }
@@ -129,10 +131,11 @@ public abstract class Entity implements Location {
     public void setYSpeed(int y) {
         ySpeed = y;
     }
-    @Override
+    
     /**
      * Find the next location the entity should move to.
      */
+    @Override
     public void findNextLocation(){ 
         try {
             setXCoordinate(getXCoordinate()+getXSpeed());
@@ -142,10 +145,11 @@ public abstract class Entity implements Location {
             ErrorLogger.logRuntimeError("Could not calculate parent entity next location.", ex);
         }
     }
-    @Override
+    
     /**
      * Draw the entity in the given window
      * @param window the window in which to draw the entity
      */
+    @Override
     public abstract void draw(Graphics window);
 }

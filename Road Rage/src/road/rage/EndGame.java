@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 
 /**
  * Prints the end game screen with different options for the user to select what
- * they desire to do
+ * they desire to do.
  * @author 02-1024-0008
  */
 public class EndGame extends JPanel {
@@ -25,7 +25,7 @@ public class EndGame extends JPanel {
 
     /**
      * Display the end game screen and copy the player profile that needs to be
-     * saved
+     * saved.
      * @param p The PlayerProfile of the current player of the game
      */
     public EndGame(PlayerProfile p) {
@@ -50,7 +50,7 @@ public class EndGame extends JPanel {
     }
     
     /**
-     * Create the end game screen menu buttons
+     * Create the end game screen menu buttons.
      */
     public void createButtons() {
         try {
@@ -119,11 +119,11 @@ public class EndGame extends JPanel {
             ErrorLogger.logRuntimeError("Could not add end game frame buttons.", ex);
         }
     }
-
-    @Override
+ 
     /**
      * Draw the end game screen.
      */
+    @Override
     public void paintComponent(Graphics g)
     {
         try {
