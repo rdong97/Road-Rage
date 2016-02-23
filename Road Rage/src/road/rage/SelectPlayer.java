@@ -111,7 +111,7 @@ public class SelectPlayer extends JPanel {
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(15),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(13),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw select player menu graphic", ex);

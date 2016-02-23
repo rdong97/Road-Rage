@@ -1,14 +1,14 @@
 package road.rage;
 
-/**
- * Class dedicated to the hunter that chases the user
- * @author 02-1024-0008
- */
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+/**
+ * Class dedicated to the hunter that chases the user
+ * @author 02-1024-0008
+ */
 public class Hunter extends Vehicle {
     
     private int score,ammo,maxAmmo;

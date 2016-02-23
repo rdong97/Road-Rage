@@ -1,11 +1,11 @@
 package road.rage;
 
+import java.awt.Graphics;
+
 /**
  * Class dedicated to any object on the road that moves relative to the screen
  * @author 02-1024-0008
  */
-import java.awt.Graphics;
-
 public abstract class Entity implements Location {
     public int xCoordinate, yCoordinate, xWidth, yLength, xSpeed, ySpeed;
     

@@ -1,16 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package road.rage;
+
+import java.awt.Graphics;
 
 /**
  * Class dedicated to locations of objects
  * @author 02-1024-0008
  */
-
-import java.awt.Graphics;
-
 public interface Location 
 {
     /**

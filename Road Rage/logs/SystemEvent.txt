@@ -2410,3 +2410,99 @@ Feb 22, 2016 6:55:20 PM road.rage.EventLogger logEvent
 INFO: Music successfully loaded and played
 
 
+Feb 22, 2016 6:56:48 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 22, 2016 6:56:49 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 22, 2016 6:56:49 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:05:32 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 22, 2016 7:05:32 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 22, 2016 7:05:33 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:05:35 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 22, 2016 7:05:35 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:05:36 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:05:37 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 22, 2016 7:05:37 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 22, 2016 7:05:46 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:34 PM road.rage.EventLogger logEvent
+INFO: Images successfully loaded
+
+
+Feb 22, 2016 7:11:35 PM road.rage.EventLogger logEvent
+INFO: Game menu load successful
+
+
+Feb 22, 2016 7:11:35 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:37 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 22, 2016 7:11:37 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:41 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:41 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 22, 2016 7:11:41 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+
+Feb 22, 2016 7:11:42 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:59 PM road.rage.EventLogger logEvent
+INFO: Music successfully loaded and played
+
+
+Feb 22, 2016 7:11:59 PM road.rage.EventLogger logEvent
+INFO: Profile list successfully loaded
+
+
+Feb 22, 2016 7:11:59 PM road.rage.EventLogger logEvent
+INFO: New profile saved in list successfully
+
+

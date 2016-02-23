@@ -91,7 +91,7 @@ public class HUD {
             ErrorLogger.logRuntimeError("Could not set HUD font.", ex);
         }
         try {
-            window.drawImage(ImageManager.getImage(13), 900, 0, 300, 900, null);
+            window.drawImage(ImageManager.getImage(11), 900, 0, 300, 900, null);
             window.drawString("Name: "+profileName, 950,200);
             window.drawString("Score: "+score, 950,400);
             window.drawString("Health: "+health+"/"+maxHealth, 950,500);

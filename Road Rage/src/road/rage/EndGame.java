@@ -127,7 +127,7 @@ public class EndGame extends JPanel {
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(14),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(12),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw end game frame graphic.", ex);

@@ -211,16 +211,16 @@ public class Debris extends Entity {
         try {
             int imageNum;
             if(getDebrisType()==1) {
-                imageNum = 8;
+                imageNum = 6;
             }
             else if(getDebrisType()==2) {
-                imageNum = 9;
+                imageNum = 7;
             }
             else if(getDebrisType()==3) {
-                imageNum = 10;
+                imageNum = 8;
             }
             else if(getDebrisType()==4) {
-                imageNum = 11;
+                imageNum = 9;
             }
             else {
                 imageNum = -1;

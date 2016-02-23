@@ -58,12 +58,19 @@ public class Store extends JPanel{
         try {
             this.removeAll();
             JLabel score = new JLabel("Score:"+playerProfile.getScore());
+            score.setForeground(Color.WHITE);
             score.setBounds(10,10,100,20);
             this.add(score);
+            JLabel instructions = new JLabel("100 score = +10 health or ammo");
+            instructions.setForeground(Color.WHITE);
+            instructions.setBounds(10,50,200,20);
+            this.add(instructions);
             JLabel health = new JLabel("Max Health:"+playerProfile.getMaxHealth());
+            health.setForeground(Color.WHITE);
             health.setBounds(10,100,100,20);
             this.add(health);
             JLabel ammo = new JLabel("Max Ammo:"+playerProfile.getMaxAmmo());
+            ammo.setForeground(Color.WHITE);
             ammo.setBounds(10,140,100,20);
             this.add(ammo);
             createButtons();//add buttons that were removed
@@ -90,7 +97,7 @@ public class Store extends JPanel{
     public void paintComponent(Graphics g)
     {
         try {
-            g.drawImage(ImageManager.getImage(15),0,0,getWidth(),getHeight(),null);
+            g.drawImage(ImageManager.getImage(13),0,0,getWidth(),getHeight(),null);
         }
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not draw store graphic", ex);

@@ -23,7 +23,7 @@ public class TutorialSlideShow extends JPanel {
     private JFrame tutorialScreen;
     private ArrayList<Image>imageList;
     private int currentSlideNumber;
-    private final int numberSlides=3;
+    private final int numberSlides=4;
     private Font font;
     
     /**
@@ -48,7 +48,7 @@ public class TutorialSlideShow extends JPanel {
             ErrorLogger.logRuntimeError("Could not initialize tutorial slideshow.", ex);
         }
         try {
-           for(int i=2;i<4;i++) {
+           for(int i=2;i<=5;i++) {
                 imageList.add(ImageManager.getImage(i));
             } 
         }
@@ -80,6 +80,7 @@ public class TutorialSlideShow extends JPanel {
                     if(currentSlideNumber<0) {
                         tutorialScreen.dispose();
                     }
+                    removeAll();
                     addButtons();
                     repaint();
                 }
@@ -99,13 +100,14 @@ public class TutorialSlideShow extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     currentSlideNumber++;
+                    removeAll();
                     Music.play("ButtonSound");
                     addButtons();
                     repaint();
                 }
             });
             next.setBounds(700,0,100,50);//set location
-            if(currentSlideNumber<numberSlides) {
+            if(currentSlideNumber<numberSlides-1) {
                 this.add(next);//add to frame.
             }
         }
