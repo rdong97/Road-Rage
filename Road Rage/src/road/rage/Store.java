@@ -81,6 +81,11 @@ public class Store extends JPanel{
         }
     }
     
+    
+    /**
+     * Draw the store menu
+     * @param g the specified graphics to draw the store menu
+     */
     @Override
     public void paintComponent(Graphics g)
     {

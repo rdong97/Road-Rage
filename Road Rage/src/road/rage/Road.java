@@ -101,7 +101,7 @@ public class Road {
     }
     
     /**
-     * 
+     * Start the spawning of enemies.
      */
     public void startSpawnEnemy() {
         ActionListener timerListener = new ActionListener() {
@@ -139,8 +139,8 @@ public class Road {
     }
     
     /**
-     * 
-     * @param toMatch 
+     * Remove an enemy
+     * @param toMatch the enemy to remove
      */
     public void removeEnemy(Enemy toMatch) {
         try {
@@ -161,8 +161,8 @@ public class Road {
     }
     
     /**
-     * 
-     * @return 
+     * Check to see the status of enemies and the hunter after the game has ended
+     * @return whether or not the user has one the game.
      */
     public boolean hasGameEnded() {
         try {
@@ -182,7 +182,7 @@ public class Road {
     }
     
     /**
-     * 
+     * Check to see if any objects have collided.
      */
     public void checkCollisions() {
         //establish points for Hunter hitbox
@@ -290,7 +290,7 @@ public class Road {
     }
     
     /**
-     * 
+     * Update the locations of all the entities.
      */
     public void updateEntityLocations() {
         try {
@@ -315,8 +315,8 @@ public class Road {
     }
     
     /**
-     * 
-     * @return 
+     * Get the statistics for the hunter
+     * @return An ArrayList of all the statistics of the hunter
      */
     public ArrayList<Integer>getLiveStats() {
         try {
@@ -335,8 +335,8 @@ public class Road {
     }
     
     /**
-     * 
-     * @param window 
+     * Draw the hunter, debris and enemies on the road
+     * @param window The window in which to draw the hunter, debris and enemies
      */
     public void draw(Graphics window) {
         try {

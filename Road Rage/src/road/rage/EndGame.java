@@ -118,6 +118,9 @@ public class EndGame extends JPanel {
     }
 
     @Override
+    /**
+     * Draw the end game screen.
+     */
     public void paintComponent(Graphics g)
     {
         try {

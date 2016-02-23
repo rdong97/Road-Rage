@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * Class dedicated to the tutorial menu
  * @author 02-1024-0008
  */
 public class TutorialSlideShow extends JPanel {
@@ -27,7 +27,7 @@ public class TutorialSlideShow extends JPanel {
     private Font font;
     
     /**
-     * Display the tutorial menu for the user to learn how to play the game
+     * Display the tutorial menu for the user to learn how to play the game.
      */
     public TutorialSlideShow() {
         try {
@@ -60,7 +60,7 @@ public class TutorialSlideShow extends JPanel {
     
     /**
      * Add the buttons for the user to select options that are displayed in the 
-     * tutorial
+     * tutorial.
      */
     public void addButtons() {
         try {
@@ -112,6 +112,11 @@ public class TutorialSlideShow extends JPanel {
         }
     }
     
+    
+    /**
+     * Draw the tutorial menu page.
+     * @param g the specified graphics to draw the tutorial menu
+     */
     @Override
     public void paintComponent(Graphics g)
     {

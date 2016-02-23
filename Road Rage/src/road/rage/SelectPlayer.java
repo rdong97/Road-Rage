@@ -101,8 +101,12 @@ public class SelectPlayer extends JPanel {
         catch(Exception ex) {
             ErrorLogger.logRuntimeError("Could not create select player buttons", ex);
         }
-    } 
+    }
     @Override
+    /**
+     * Draw the player selection menu.
+     * @param g the specified graphics by which to draw the player selection menu.
+     */
     public void paintComponent(Graphics g)
     {
         try {

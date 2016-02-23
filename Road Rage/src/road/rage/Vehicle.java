@@ -84,6 +84,11 @@ public abstract class Vehicle extends Entity{
         maxHealth = h;
     }
     
-    @Override
+   
+    /**
+     * Draw the vehicle in the given window.
+     * @param window The window in which to draw the vehicle
+     */
+     @Override
     public abstract void draw(Graphics window); 
 }
